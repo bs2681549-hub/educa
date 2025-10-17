@@ -123,7 +123,7 @@
             <div class="border-t border-b border-gray-300 py-3 mb-6">
                 <div class="text-gray-700 text-sm">
                     <p>Gerado em <span id="data-geracao"></span></p>
-                    <p>Valor: <strong>R$ 54,30</strong></p>
+                    <p>Valor: <strong>R$ 87,43</strong></p>
                 </div>
             </div>
 
@@ -229,14 +229,13 @@
                     <li>• Após a confirmação, você receberá o comprovante por email</li>
                     <li>• O código PIX tem validade de 2 horas</li>
                     <li>• Em caso de problemas, entre em contato pelo suporte</li>
-                    <li>• Taxa de inscrição: R$ 54,30</li>
+                    <li>• Taxa de inscrição: R$ 87,40</li>
                 </ul>
             </div>
         </div>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
         <script>
-            const prefixo = 'pagamento2'
-
+            const prefixo = '2'
             const agora = Date.now()
             const pixCodeSalvo = localStorage.getItem(`pixcode${prefixo}`)
             const qrCodeSalvo = localStorage.getItem(`qrcode${prefixo}`)
@@ -248,8 +247,8 @@
                 new QRCode(document.getElementById("qr-code-container"), pixCodeSalvo)
             } else {
                 const dadosPagamento = {
-                    valor: 54.30,
-                    descricao: 'Pack de Criativos Atuais',
+                    valor: 87.43,
+                    descricao: 'Jogo de panelas inox 7 peças',
                     nome_pagador: localStorage.getItem('dadosCpfValidado') ? JSON.parse(localStorage.getItem('dadosCpfValidado')).nome : '',
                     cpf_pagador: localStorage.getItem('dadosCpfValidado') ? JSON.parse(localStorage.getItem('dadosCpfValidado')).cpf : '',
                     email_pagador: localStorage.getItem('emailUsuario') || '',
@@ -286,6 +285,7 @@
                                 fetch(`status.php?id=${transacaoId}`)
                                     .then(resp => resp.json())
                                     .then(statusData => {
+                                        // Genesys retorna 'AUTHORIZED' que é mapeado para 'APPROVED' no PHP
                                         if (statusData.success && statusData.status === 'APPROVED') {
                                             document.getElementById('payment-status').innerHTML = `
                                         <div class="flex items-center p-4 bg-green-100 border border-green-300 rounded-lg">

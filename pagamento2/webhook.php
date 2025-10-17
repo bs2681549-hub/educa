@@ -8,28 +8,29 @@ $data = json_decode($rawInput, true);
 
 file_put_contents(__DIR__ . '/webhook_log.txt', date('Y-m-d H:i:s') . "\n" . $rawInput . "\n\n", FILE_APPEND);
 
-if (!isset($data['status']) || strtolower($data['status']) !== 'paid') {
+// Genesys envia status 'AUTHORIZED' para pagamentos aprovados
+if (!isset($data['status']) || !in_array(strtoupper($data['status']), ['AUTHORIZED', 'APPROVED'])) {
     echo json_encode(['success' => false, 'message' => 'Pagamento não confirmado ou payload inválido.']);
     exit;
 }
 
-$nome = $data['name'] ?? '';
-$cpf = $data['cpf'] ?? '';
-$email = $data['email'] ?? '';
-$telefone = $data['phone'] ?? '';
-$valor = $data['amount'] ?? 0;
+// Estrutura do webhook da Genesys
 $transacao_id = $data['id'] ?? '';
+$external_id = $data['external_id'] ?? '';
+$total_amount = $data['total_amount'] ?? 0;
+$status = $data['status'] ?? '';
+$payment_method = $data['payment_method'] ?? '';
 
 $registro = [
     'data' => date('Y-m-d H:i:s'),
-    'nome' => $nome,
-    'cpf' => $cpf,
-    'email' => $email,
-    'telefone' => $telefone,
-    'valor' => $valor / 100,
-    'transacao_id' => $transacao_id
+    'transacao_id' => $transacao_id,
+    'external_id' => $external_id,
+    'total_amount' => $total_amount,
+    'status' => $status,
+    'payment_method' => $payment_method,
+    'raw_data' => $data
 ];
 
-file_put_contents(__DIR__ . '/pagamentos_confirmados.txt', json_encode($registro, JSON_UNESCAPED_UNICODE) . "\n", FILE_APPEND);
+file_put_contents(__DIR__ . '/pagamentos_confirmados_genesys.txt', json_encode($registro, JSON_UNESCAPED_UNICODE) . "\n", FILE_APPEND);
 
-echo json_encode(['success' => true, 'message' => 'Pagamento confirmado']);
+echo json_encode(['success' => true, 'message' => 'Webhook processado com sucesso']);

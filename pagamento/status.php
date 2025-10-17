@@ -10,19 +10,14 @@ if (!isset($_GET['id'])) {
 
 $transacao_id = $_GET['id'];
 
-$url = 'https://api.ghostspaysv2.com/functions/v1/transactions/' . urlencode($transacao_id);
-
-// Basic Auth credentials (SecretKey:CompanyId)
-$secretKey = 'sk_live_dF3G0cVmf0ZISiLTc8zlkFH12x9ROTn18CGiTDzWlaT0dvqW';
-$companyId = '843c2313-3c9b-4acf-9b2c-c42206759932';
-$credentials = base64_encode($secretKey . ':' . $companyId);
+$url = 'https://api.genesys.finance/v1/transactions/' . urlencode($transacao_id);
 
 $ch = curl_init($url);
 curl_setopt_array($ch, [
     CURLOPT_RETURNTRANSFER => true,
     CURLOPT_HTTPHEADER => [
         'Content-Type: application/json',
-        'Authorization: Basic ' . $credentials
+        'api-secret: sk_ceb803639d6660bc849d6e2c583f179a9d78a6c5a8fc5b99460f4c74d5ff338e2aad7ecf54e411280acd2a35a22ca8e87c6459234df1537f09aaeffba19fc985'
     ]
 ]);
 
@@ -33,7 +28,7 @@ curl_close($ch);
 
 $data = json_decode($response, true);
 
-file_put_contents(__DIR__ . '/ghostpay_status_log.txt', json_encode([
+file_put_contents(__DIR__ . '/genesys_status_log.txt', json_encode([
     'timestamp' => date('Y-m-d H:i:s'),
     'transacao_id' => $transacao_id,
     'httpCode' => $httpCode,
@@ -42,15 +37,17 @@ file_put_contents(__DIR__ . '/ghostpay_status_log.txt', json_encode([
     'resposta_decode' => $data
 ], JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE) . "\n", FILE_APPEND);
 
-if ($httpCode === 200) {
-    $tx = $data['data'] ?? $data;
-    $status = $tx['status'] ?? null;
-    // Normaliza: front espera 'APPROVED'; API v2 usa 'paid'
-    $normalized = ($status === 'paid') ? 'APPROVED' : strtoupper((string)$status);
+if ($httpCode === 200 && isset($data['status'])) {
+    // Mapear status da Genesys para o formato esperado pelo frontend
+    $statusMapeado = $data['status'];
+    if ($statusMapeado === 'AUTHORIZED') {
+        $statusMapeado = 'APPROVED';
+    }
+    
     echo json_encode([
         'success' => true,
-        'status' => $normalized,
-        'dados' => $tx
+        'status' => $statusMapeado,
+        'dados' => $data
     ]);
 } else {
     echo json_encode([

